@@ -57,8 +57,9 @@
 
         /* ─── Background Image ──────────────────────────── */
         /*
-         * DROP your bg image as "bg.jpg" in the same folder.
-         * The overlay keeps text readable at all times.
+         * To use a full-screen universe image, save it as "bg.jpg" in the same folder.
+         * If you don't add the image, it stays clean and plain automatically.
+         * You can increase 'opacity' (e.g. to 0.15 or 0.2) to make the image more visible.
          */
         .bg-layer {
             position: fixed;
@@ -66,7 +67,7 @@
             background-image: url('./bg.jpg');
             background-size: cover;
             background-position: center;
-            opacity: 0.06;          /* subtle — raise to 0.15 for stronger effect */
+            opacity: 0.08; /* Subtle — raise to 0.15 or 0.2 for a stronger effect */
             pointer-events: none;
             z-index: 0;
         }
@@ -389,35 +390,37 @@
             color: var(--accent);
             margin-top: 0.4rem;
         }
+
         .book-style-layout {
-    display: flex;
-    flex-direction: column;
-    gap: 2.5rem;
-    margin-top: 3rem;
-}
+            display: flex;
+            flex-direction: column;
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
 
-.bio-paragraph {
-    width: 100%;
-}
+        .bio-paragraph {
+            width: 100%;
+        }
 
-.bio-paragraph h3 {
-    margin-bottom: 1rem;
-    font-size: 1.25rem;
-    letter-spacing: 0.04em;
-}
+        .bio-paragraph h3 {
+            margin-bottom: 1rem;
+            font-size: 1.25rem;
+            letter-spacing: 0.04em;
+        }
 
-.bio-paragraph p {
-    line-height: 2;
-    text-align: justify;
-    font-size: 1.02rem;
-    opacity: 0.92;
-}
+        .bio-paragraph p {
+            line-height: 2;
+            text-align: justify;
+            font-size: 1.02rem;
+            opacity: 0.92;
+        }
 
-.bio-divider {
-    width: 100%;
-    height: 1px;
-    background: rgba(255,255,255,0.08);
-}
+        .bio-divider {
+            width: 100%;
+            height: 1px;
+            background: rgba(255,255,255,0.08);
+        }
+
         /* ─── EXPERIENCE ─────────────────────────────────── */
         .timeline-item {
             display: grid;
@@ -763,7 +766,7 @@
         <div class="sidebar-photo-wrap">
             <!--
                 Place your photo in the same GitHub folder as index.html
-                and name it exactly: photo.jpg
+                and name it exactly: ayush.jpeg
             -->
             <img src="./ayush.jpeg" alt="Ayush Singh" onerror="this.style.display='none'">
         </div>
@@ -778,7 +781,7 @@
         <!-- CV Download -->
         <!--
             Place your CV in the same GitHub folder as index.html
-            and name it exactly: cv.pdf
+            and name it exactly: CV_singh_ayush.pdf
         -->
         <a href="./CV_singh_ayush .pdf" target="_blank" rel="noopener noreferrer" class="cv-btn">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -841,50 +844,45 @@
             </div>
         </section>
 
-         <!-- ABOUT -->
-<section id="about" class="tab-pane">
-    <div class="section-header">
-       
-        <h2>About Me</h2>
-    </div>
+        <!-- ABOUT -->
+        <section id="about" class="tab-pane">
+            <div class="section-header">
+                <h2>About Me</h2>
+            </div>
 
-    <div class="book-style-layout">
+            <div class="book-style-layout">
 
-        <div class="bio-paragraph">
-            <h3>Academic Background</h3>
+                <div class="bio-paragraph">
+                    <h3>Academic Background</h3>
+                    <p>
+                        I am a senior-year Physics student at Birla Institute of Technology, Mesra, pursuing an Integrated M.Sc. in Physics with a minor in Mathematics and Computing. My interests lie primarily in astronomy and cosmology — particularly galaxies, dark matter, astroparticle physics, dark energy, modified gravity, gravitational waves, stellar evolution, and the large-scale structure of the universe. I enjoy exploring these fields through both observational and computational approaches.
+                    </p>
+                </div>
 
-            <p>
-                I am a senior-year Physics student at Birla Institute of Technology, Mesra, pursuing an Integrated M.Sc. in Physics with a minor in Mathematics and Computing. My interests lie primarily in astronomy and cosmology — particularly galaxies, dark matter, astroparticle physics, dark energy, modified gravity, gravitational waves, stellar evolution, and the large-scale structure of the universe. I enjoy exploring these fields through both observational and computational approaches.
-            </p>
-        </div>
+                <div class="bio-divider"></div>
 
-        <div class="bio-divider"></div>
+                <div class="bio-paragraph">
+                    <h3>Current Direction</h3>
+                    <p>
+                        At present, I am actively seeking internships and research opportunities in these domains. I am also considering applying for one-year postgraduate diploma or research-oriented programs in theoretical physics or cosmology rather than continuing along a conventional academic route. Institutes such as Perimeter Institute and ICTP especially inspire me because of their emphasis on foundational physics, open scientific thought, and deep curiosity about the universe.
+                    </p>
+                </div>
 
-        <div class="bio-paragraph">
-            <h3>Current Direction</h3>
+                <div class="bio-divider"></div>
 
-            <p>
-                At present, I am actively seeking internships and research opportunities in these domains. I am also considering applying for one-year postgraduate diploma or research-oriented programs in theoretical physics or cosmology rather than continuing along a conventional academic route. Institutes such as Perimeter Institute and ICTP especially inspire me because of their emphasis on foundational physics, open scientific thought, and deep curiosity about the universe.
-            </p>
-        </div>
+                <div class="bio-paragraph">
+                    <h3>Long-Term Vision</h3>
+                    <p>
+                        In the long term, I hope to pursue a Ph.D. in computational cosmology, ideally combining astrophysics, cosmology, numerical simulations, and theoretical physics. More than anything, I am driven by curiosity — trying to understand how humanity interprets the universe while quietly adding a few ideas of my own along the way.
+                    </p>
+                </div>
 
-        <div class="bio-divider"></div>
-
-        <div class="bio-paragraph">
-            <h3>Long-Term Vision</h3>
-
-            <p>
-                In the long term, I hope to pursue a Ph.D. in computational cosmology, ideally combining astrophysics, cosmology, numerical simulations, and theoretical physics. More than anything, I am driven by curiosity — trying to understand how humanity interprets the universe while quietly adding a few ideas of my own along the way.
-            </p>
-        </div>
-
-    </div>
-</section>
+            </div>
+        </section>
 
         <!-- EXPERIENCE -->
         <section id="experience" class="tab-pane">
             <div class="section-header">
-                
                 <h2>Experience</h2>
             </div>
 
@@ -923,74 +921,72 @@
         </section>
 
         <!-- RESEARCH -->
-<section id="research" class="tab-pane">
-    <div class="section-header">
-       
-        <h2>Projects (kind of learning)</h2>
-    </div>
+        <section id="research" class="tab-pane">
+            <div class="section-header">
+                <h2>Projects (kind of learning)</h2>
+            </div>
 
-    <!-- APRIL 2026 -->
-    <div class="abstract-block">
-        <div class="abstract-meta">
-            <span class="mono">April 2026 — Present</span>
-        </div>
+            <!-- APRIL 2026 -->
+            <div class="abstract-block">
+                <div class="abstract-meta">
+                    <span class="mono">April 2026 — Present</span>
+                </div>
 
-        <h3>Introduction to Bayesian Methods and Monte Carlo Techniques</h3>
+                <h3>Introduction to Bayesian Methods and Monte Carlo Techniques</h3>
 
-        <div class="abstract-meta">
-            <span class="mono">
-                Advisor:
-                <strong>
-                    Dr. Prakash Chandra ·
-                    Department of Mathematics, Birla Institute of Technology.
-                </strong>
-            </span>
-        </div>
+                <div class="abstract-meta">
+                    <span class="mono">
+                        Advisor:
+                        <strong>
+                            Dr. Prakash Chandra ·
+                            Department of Mathematics, Birla Institute of Technology.
+                        </strong>
+                    </span>
+                </div>
 
-        <p>
-            Studying the fundamentals of Bayesian methods and implementing probabilistic models for parameter estimation and statistical inference.
-        </p>
+                <p>
+                    Studying the fundamentals of Bayesian methods and implementing probabilistic models for parameter estimation and statistical inference.
+                </p>
 
-        <p>
-            Exploring Monte Carlo methods with emphasis on stochastic sampling techniques as part of ongoing computational and research training.
-        </p>
-    </div>
+                <p>
+                    Exploring Monte Carlo methods with emphasis on stochastic sampling techniques as part of ongoing computational and research training.
+                </p>
+            </div>
 
-    <!-- DIVIDER -->
-    <div class="publication-divider"></div>
+            <!-- DIVIDER -->
+            <div class="publication-divider"></div>
 
-    <!-- PREVIOUS PROJECT -->
-    <div class="abstract-block">
-        <div class="abstract-meta">
-            <span class="mono">April 2025 — August 2025</span>
-        </div>
+            <!-- PREVIOUS PROJECT -->
+            <div class="abstract-block" style="margin-top: 2.5rem;">
+                <div class="abstract-meta">
+                    <span class="mono">April 2025 — August 2025</span>
+                </div>
 
-        <h3>Quasi-Normal Modes of Ellis–Bronnikov Wormholes</h3>
+                <h3>Quasi-Normal Modes of Ellis–Bronnikov Wormholes</h3>
 
-        <div class="abstract-meta">
-            <span class="mono">
-                Supervisor:
-                <strong>
-                    Dr. Suman Ghosh ·
-                    Department of Physics, Birla Institute of Technology.
-                </strong>
-            </span>
-        </div>
+                <div class="abstract-meta">
+                    <span class="mono">
+                        Supervisor:
+                        <strong>
+                            Dr. Suman Ghosh ·
+                            Department of Physics, Birla Institute of Technology.
+                        </strong>
+                    </span>
+                </div>
 
-        <p>
-            Investigated quasi-normal modes (QNMs) of Ellis–Bronnikov wormholes under perturbative analysis to study their characteristic oscillation and damping behaviour.
-        </p>
+                <p>
+                    Investigated quasi-normal modes (QNMs) of Ellis–Bronnikov wormholes under perturbative analysis to study their characteristic oscillation and damping behaviour.
+                </p>
 
-        <p>
-            Implemented and compared semi-analytical and numerical techniques, particularly the WKB approximation and Prony method, for accurate computation and analysis of QNM frequencies.
-        </p>
-    </div>
-</section>
+                <p>
+                    Implemented and compared semi-analytical and numerical techniques, particularly the WKB approximation and Prony method, for accurate computation and analysis of QNM frequencies.
+                </p>
+            </div>
+        </section>
 
         <!-- PUBLICATIONS -->
         <section id="publications" class="tab-pane">
             <div class="section-header">
-                
                 <h2>Publications &amp; Conference Presentations</h2>
             </div>
 
@@ -1069,7 +1065,6 @@
         <!-- COURSEWORK -->
         <section id="coursework" class="tab-pane">
             <div class="section-header">
-               
                 <h2>Coursework</h2>
             </div>
 
@@ -1131,7 +1126,6 @@
         <!-- SKILLS -->
         <section id="skills" class="tab-pane">
             <div class="section-header">
-                
                 <h2>Skills &amp; Tools</h2>
             </div>
 
@@ -1195,7 +1189,6 @@
         <!-- CONTACT -->
         <section id="contact" class="tab-pane">
             <div class="section-header">
-                
                 <h2>Contact</h2>
             </div>
 
@@ -1244,8 +1237,10 @@
                             font-style: italic;
                             font-size: 1.15rem;
                             line-height: 1.8;
+                            display: block;
+                            margin-top: 0.2rem;
                         ">
-                            <br> Hostel-13 · Birla Institute of Technology, Mesra
+                            Hostel-13 · Birla Institute of Technology, Mesra<br>
                             Ranchi, Jharkhand · India
                         </span>
                     </div>
