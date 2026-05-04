@@ -389,34 +389,35 @@
             color: var(--accent);
             margin-top: 0.4rem;
         }
-        .bio-layout {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
+        .book-style-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
     margin-top: 3rem;
 }
 
-.bio-block {
-    padding-right: 1rem;
-    border-right: 1px solid rgba(255,255,255,0.08);
+.bio-paragraph {
+    width: 100%;
 }
 
-.bio-block:last-child {
-    border-right: none;
-}
-
-.bio-block h3 {
+.bio-paragraph h3 {
     margin-bottom: 1rem;
-    font-size: 1.2rem;
+    font-size: 1.25rem;
     letter-spacing: 0.04em;
 }
 
-.bio-block p {
-    line-height: 1.95;
+.bio-paragraph p {
+    line-height: 2;
     text-align: justify;
+    font-size: 1.02rem;
     opacity: 0.92;
 }
 
+.bio-divider {
+    width: 100%;
+    height: 1px;
+    background: rgba(255,255,255,0.08);
+}
         /* ─── EXPERIENCE ─────────────────────────────────── */
         .timeline-item {
             display: grid;
@@ -848,9 +849,9 @@
         <h2>Biography</h2>
     </div>
 
-    <div class="bio-layout">
+    <div class="book-style-layout">
 
-        <div class="bio-block">
+        <div class="bio-paragraph">
             <h3>Academic Background</h3>
 
             <p>
@@ -858,7 +859,9 @@
             </p>
         </div>
 
-        <div class="bio-block">
+        <div class="bio-divider"></div>
+
+        <div class="bio-paragraph">
             <h3>Current Direction</h3>
 
             <p>
@@ -866,11 +869,13 @@
             </p>
         </div>
 
-        <div class="bio-block">
+        <div class="bio-divider"></div>
+
+        <div class="bio-paragraph">
             <h3>Long-Term Vision</h3>
 
             <p>
-                In the long term, I hope to pursue a Ph.D. in computational cosmology, ideally combining astrophysics, cosmology, numerical simulations, and theoretical physics. More than anything, I am driven by curiosity — trying to understand the universe not only through existing theories, but also by contributing a few thoughts and questions of my own along the way.
+                In the long term, I hope to pursue a Ph.D. in computational cosmology, ideally combining astrophysics, cosmology, numerical simulations, and theoretical physics. More than anything, I am driven by curiosity — trying to understand how humanity interprets the universe while quietly adding a few ideas of my own along the way.
             </p>
         </div>
 
