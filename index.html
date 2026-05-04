@@ -1,0 +1,1232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ayush Singh | Maybe Cosmologist</title>
+
+    <!-- Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <style>
+        /* ─── CSS Variables ─────────────────────────────── */
+        :root {
+            --bg:        #F5F3ED;
+            --bg-card:   #EDEAE0;
+            --ink:       #18171A;
+            --muted:     #6B6763;
+            --faint:     rgba(24, 23, 26, 0.07);
+            --accent:    #B33A22;
+            --accent-dk: #8C2D18;
+            --gold:      #C8A96E;
+
+            --font-serif: 'Cormorant Garamond', Georgia, serif;
+            --font-sans:  'DM Sans', sans-serif;
+            --font-mono:  'DM Mono', monospace;
+
+            --sidebar-w: 300px;
+            --ease:      cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        /* ─── Reset ─────────────────────────────────────── */
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            background-color: var(--bg);
+            color: var(--ink);
+            font-family: var(--font-sans);
+            font-size: 1.0625rem;
+            line-height: 1.65;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ─── Grain Overlay ─────────────────────────────── */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.028'/%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 9999;
+        }
+
+        /* ─── Background Image ──────────────────────────── */
+        /*
+         * DROP your bg image as "bg.jpg" in the same folder.
+         * The overlay keeps text readable at all times.
+         */
+        .bg-layer {
+            position: fixed;
+            inset: 0;
+            background-image: url('./bg.jpg');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.06;          /* subtle — raise to 0.15 for stronger effect */
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        ::selection { background: var(--ink); color: var(--bg); }
+
+        /* ─── Typography ─────────────────────────────────── */
+        h1, h2, h3, h4 {
+            font-family: var(--font-serif);
+            font-weight: 600;
+            line-height: 1.15;
+            color: var(--ink);
+        }
+
+        .mono {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            letter-spacing: 0.09em;
+            text-transform: uppercase;
+            color: var(--muted);
+        }
+
+        p { margin-bottom: 1.4rem; font-weight: 300; }
+        p:last-child { margin-bottom: 0; }
+
+        a {
+            color: var(--ink);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: color 0.25s, border-color 0.25s;
+        }
+        a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+
+        /* ─── Page Layout ────────────────────────────────── */
+        .layout {
+            display: grid;
+            grid-template-columns: var(--sidebar-w) 1fr;
+            min-height: 100vh;
+            max-width: 1520px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ─── Sidebar ────────────────────────────────────── */
+        .sidebar {
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            overflow-y: auto;
+            padding: 3rem 2.5rem 3rem 3rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            border-right: 1px solid var(--faint);
+            scrollbar-width: none;
+        }
+        .sidebar::-webkit-scrollbar { display: none; }
+
+        /* ── Photo ── */
+        .sidebar-photo-wrap {
+            width: 88px;
+            height: 88px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 2px solid var(--faint);
+            margin-bottom: 1.6rem;
+            background: var(--bg-card);
+            flex-shrink: 0;
+            position: relative;
+        }
+        /*
+         * DROP your photo as "photo.jpg" in the same folder.
+         * The placeholder circle shows if the file is missing.
+         */
+        .sidebar-photo-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        .sidebar-photo-wrap::after {
+            /* Fallback ring that shows if image fails */
+            content: 'A·S';
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-serif);
+            font-size: 1.3rem;
+            font-style: italic;
+            color: var(--muted);
+            z-index: -1;
+        }
+
+        /* ── Brand text ── */
+        .brand h1 {
+            font-size: 2rem;
+            letter-spacing: -0.025em;
+            margin-bottom: 0.3rem;
+        }
+
+        .brand .tagline {
+            font-family: var(--font-mono);
+            font-size: 0.68rem;
+            letter-spacing: 0.1em;
+            color: var(--accent);
+            text-transform: uppercase;
+            display: block;
+            margin-bottom: 1.2rem;
+        }
+
+        .brand .poetic {
+            font-family: var(--font-serif);
+            font-style: italic;
+            font-size: 1rem;
+            color: var(--muted);
+            line-height: 1.5;
+            padding-left: 1rem;
+            border-left: 2px solid var(--gold);
+            margin-bottom: 2.5rem;
+        }
+
+        /* ── CV Button ── */
+        /*
+         * DROP your CV as "cv.pdf" in the same folder.
+         */
+        .cv-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.55rem 1.1rem;
+            border: 1px solid var(--ink);
+            border-radius: 2px;
+            font-family: var(--font-mono);
+            font-size: 0.68rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--ink);
+            border-bottom: 1px solid var(--ink); /* override <a> reset */
+            transition: background 0.25s var(--ease), color 0.25s var(--ease);
+            margin-bottom: 2.5rem;
+            width: fit-content;
+        }
+        .cv-btn:hover {
+            background: var(--ink);
+            color: var(--bg);
+            border-bottom-color: var(--ink);
+        }
+        .cv-btn svg { width: 11px; height: 11px; flex-shrink: 0; }
+
+        /* ── Navigation ── */
+        .nav-list {
+            list-style: none;
+            margin-top: auto;
+        }
+
+        .nav-item { margin-bottom: 0.2rem; }
+
+        .nav-btn {
+            background: none;
+            border: none;
+            width: 100%;
+            text-align: left;
+            cursor: pointer;
+            font-family: var(--font-sans);
+            font-size: 0.92rem;
+            font-weight: 400;
+            color: var(--muted);
+            padding: 0.5rem 0.8rem 0.5rem 2rem;
+            border-radius: 3px;
+            position: relative;
+            transition: color 0.25s, background 0.25s;
+        }
+
+        .nav-btn::before {
+            content: attr(data-num);
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            font-family: var(--font-mono);
+            font-size: 0.62rem;
+            color: rgba(24, 23, 26, 0.22);
+            transition: color 0.25s;
+        }
+
+        .nav-btn:hover { color: var(--ink); background: var(--faint); }
+
+        .nav-btn.active {
+            color: var(--accent);
+            background: rgba(179, 58, 34, 0.06);
+            font-weight: 500;
+        }
+        .nav-btn.active::before { color: var(--accent); }
+
+        /* ─── Main Content ───────────────────────────────── */
+        .main-content {
+            padding: 5rem 7rem 5rem 5.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ─── Tab Panes ──────────────────────────────────── */
+        .tab-pane { display: none; max-width: 760px; }
+
+        .tab-pane.active {
+            display: block;
+            animation: fadeUp 0.65s var(--ease) forwards;
+        }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(18px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ─── Section Header ─────────────────────────────── */
+        .section-header {
+            margin-bottom: 3.5rem;
+        }
+
+        .section-header .mono {
+            display: block;
+            margin-bottom: 0.6rem;
+            color: var(--accent);
+        }
+
+        .section-header h2 {
+            font-size: 3.2rem;
+            letter-spacing: -0.025em;
+        }
+
+        /* ─── Decorative rule ────────────────────────────── */
+        .rule {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin: 2.5rem 0;
+        }
+        .rule::before, .rule::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--faint);
+        }
+        .rule span {
+            font-family: var(--font-mono);
+            font-size: 0.62rem;
+            letter-spacing: 0.12em;
+            color: var(--muted);
+            white-space: nowrap;
+        }
+
+        /* ─── HOME ───────────────────────────────────────── */
+        .hero-pullquote {
+            font-family: var(--font-serif);
+            font-size: 2rem;
+            line-height: 1.4;
+            font-weight: 300;
+            color: var(--ink);
+            margin-bottom: 0.75rem;
+            position: relative;
+            padding-left: 1.5rem;
+            border-left: 3px solid var(--accent);
+        }
+
+        .hero-sub {
+            font-family: var(--font-serif);
+            font-style: italic;
+            color: var(--muted);
+            font-size: 1.05rem;
+            margin-bottom: 0;
+            padding-left: 1.5rem;
+        }
+
+        .hero-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            margin-top: 3rem;
+            border: 1px solid var(--faint);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .stat-item {
+            padding: 1.2rem 1.5rem;
+            border-bottom: 1px solid var(--faint);
+            border-right: 1px solid var(--faint);
+        }
+
+        .stat-item:nth-child(even) { border-right: none; }
+        .stat-item:nth-last-child(-n+2) { border-bottom: none; }
+
+        .stat-item .mono { margin-bottom: 0.3rem; }
+
+        .stat-item .val {
+            font-family: var(--font-serif);
+            font-size: 1.15rem;
+            line-height: 1.35;
+            display: block;
+        }
+
+        /* ─── ABOUT ──────────────────────────────────────── */
+        .editorial-text {
+            column-count: 2;
+            column-gap: 3rem;
+            text-align: justify;
+            hyphens: auto;
+            font-size: 1rem;
+        }
+
+        .editorial-text p:first-of-type::first-letter {
+            float: left;
+            font-family: var(--font-serif);
+            font-size: 4.5rem;
+            line-height: 0.82;
+            padding-right: 0.6rem;
+            color: var(--accent);
+            margin-top: 0.4rem;
+        }
+
+        /* ─── EXPERIENCE ─────────────────────────────────── */
+        .timeline-item {
+            display: grid;
+            grid-template-columns: 140px 1fr;
+            gap: 2rem;
+            padding-bottom: 3rem;
+            margin-bottom: 3rem;
+            border-bottom: 1px solid var(--faint);
+            position: relative;
+        }
+
+        .timeline-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        /* Vertical connector line */
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 120px;
+            top: 0.5rem;
+            bottom: -3rem;
+            width: 1px;
+            background: var(--faint);
+        }
+        .timeline-item:last-child::before { display: none; }
+
+        /* Dot on the line */
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            left: calc(120px + 2rem - 4px);
+            top: 0.55rem;
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: var(--accent);
+        }
+
+        .timeline-meta {
+            text-align: right;
+            padding-top: 0.25rem;
+        }
+        .timeline-meta .mono { line-height: 1.6; }
+
+        .timeline-content h3 {
+            font-size: 1.6rem;
+            margin-bottom: 0.2rem;
+        }
+
+        .timeline-content h4 {
+            font-family: var(--font-sans);
+            font-size: 0.85rem;
+            font-weight: 400;
+            color: var(--accent);
+            letter-spacing: 0.05em;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+
+        .meta-pill {
+            display: inline-block;
+            font-family: var(--font-mono);
+            font-size: 0.65rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-right: 0.4rem;
+            margin-bottom: 0.25rem;
+        }
+
+        /* ─── RESEARCH / PROJECTS ────────────────────────── */
+        .abstract-block {
+            background: var(--bg-card);
+            padding: 2.8rem;
+            border-left: 3px solid var(--accent);
+            border-radius: 0 4px 4px 0;
+            position: relative;
+        }
+
+        .abstract-block::before {
+            content: '§';
+            position: absolute;
+            top: 1.5rem;
+            right: 2rem;
+            font-family: var(--font-serif);
+            font-size: 3rem;
+            color: var(--faint);
+            line-height: 1;
+        }
+
+        .abstract-block h3 {
+            font-size: 1.75rem;
+            margin-bottom: 1.2rem;
+            line-height: 1.25;
+        }
+
+        .abstract-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-bottom: 1.8rem;
+            padding-bottom: 1.2rem;
+            border-bottom: 1px solid var(--faint);
+        }
+
+        .abstract-meta .mono strong { color: var(--accent); }
+
+        /* ─── PUBLICATIONS ───────────────────────────────── */
+        .coming-soon {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 260px;
+            text-align: center;
+            color: var(--muted);
+            border: 1px dashed rgba(24, 23, 26, 0.15);
+            border-radius: 4px;
+            padding: 3rem;
+        }
+
+        .coming-soon p {
+            font-family: var(--font-serif);
+            font-style: italic;
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--muted);
+        }
+
+        .coming-soon span {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: rgba(24, 23, 26, 0.3);
+        }
+        
+        .publication-layout {
+            display: flex;
+            flex-direction: column;
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .publication-block {
+            width: 100%;
+        }
+
+        .publication-block h3 {
+            margin-bottom: 1.2rem;
+            font-size: 1.3rem;
+            letter-spacing: 0.04em;
+        }
+
+        .publication-block p {
+            line-height: 1.9;
+            margin-bottom: 1rem;
+            text-align: justify;
+        }
+
+        .publication-divider {
+            width: 100%;
+            height: 1px;
+            background: rgba(255,255,255,0.08);
+        }
+
+        /* ─── COURSEWORK & SKILLS ────────────────────────── */
+        .data-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2.5rem;
+        }
+
+        .data-group {
+            padding: 1.8rem;
+            background: var(--bg-card);
+            border-radius: 4px;
+            border-top: 2px solid var(--faint);
+            transition: border-color 0.25s;
+        }
+
+        .data-group:hover { border-top-color: var(--accent); }
+
+        .data-group h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.9rem;
+            padding-bottom: 0.6rem;
+            border-bottom: 1px solid var(--faint);
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        .data-group p {
+            font-size: 0.95rem;
+            color: var(--muted);
+            line-height: 1.9;
+            margin-bottom: 0;
+        }
+
+        .coursework-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .coursework-layout .data-group {
+            height: 100%;
+        }
+
+        .coursework-layout .data-group p {
+            line-height: 1.9;
+        }
+
+        /* ─── CONTACT ─────────────────────────────────────── */
+        .contact-list { list-style: none; margin-top: 2rem; }
+
+        .contact-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 1.5rem;
+            padding: 1.5rem 0;
+            border-bottom: 1px solid var(--faint);
+        }
+        .contact-list li:first-child { border-top: 1px solid var(--faint); }
+
+        .contact-list .contact-icon {
+            width: 36px;
+            height: 36px;
+            border: 1px solid var(--faint);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            margin-top: 0.2rem;
+        }
+        .contact-list .contact-icon svg { width: 14px; height: 14px; color: var(--muted); }
+
+        .contact-info .mono { margin-bottom: 0.3rem; }
+
+        .contact-info a {
+            font-family: var(--font-serif);
+            font-style: italic;
+            font-size: 1.3rem;
+            display: block;
+        }
+
+        /* ─── Watermark ──────────────────────────────────── */
+        .watermark {
+            position: fixed;
+            right: -6vw;
+            top: 50%;
+            transform: translateY(-50%) rotate(90deg);
+            font-family: var(--font-mono);
+            font-size: 13vw;
+            color: rgba(24, 23, 26, 0.018);
+            pointer-events: none;
+            white-space: nowrap;
+            z-index: 0;
+            letter-spacing: -0.05em;
+            user-select: none;
+        }
+
+        /* ─── Responsive ─────────────────────────────────── */
+        @media (max-width: 1100px) {
+            .main-content { padding: 4rem 4rem 4rem 4rem; }
+        }
+
+        @media (max-width: 768px) {
+            .layout {
+                display: block;
+            }
+
+            .sidebar {
+                position: relative;
+                height: auto;
+                padding: 2rem;
+                border-right: none;
+                border-bottom: 1px solid var(--faint);
+            }
+
+            .brand .poetic { margin-bottom: 1.5rem; }
+
+            .nav-list {
+                display: flex;
+                overflow-x: auto;
+                gap: 0.25rem;
+                padding-bottom: 0.5rem;
+                scrollbar-width: none;
+                margin-top: 0;
+            }
+            .nav-list::-webkit-scrollbar { display: none; }
+
+            .nav-btn {
+                white-space: nowrap;
+                padding-left: 0.8rem;
+            }
+            .nav-btn::before { display: none; }
+
+            .main-content { padding: 2rem; }
+
+            .editorial-text { column-count: 1; }
+
+            .data-grid { grid-template-columns: 1fr; }
+
+            .coursework-layout { grid-template-columns: 1fr; }
+
+            .hero-stats { grid-template-columns: 1fr; }
+            .stat-item { border-right: none !important; }
+            .stat-item:last-child { border-bottom: none; }
+
+            .timeline-item {
+                grid-template-columns: 1fr;
+                gap: 0.25rem;
+            }
+            .timeline-meta { text-align: left; }
+            .timeline-item::before, .timeline-item::after { display: none; }
+
+            .abstract-meta { flex-direction: column; gap: 0.5rem; }
+
+            .watermark { display: none; }
+
+            .section-header h2 { font-size: 2.4rem; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="bg-layer" aria-hidden="true"></div>
+<div class="watermark" aria-hidden="true">COSMOS</div>
+
+<div class="layout">
+
+    <!-- ─── SIDEBAR ───────────────────────────────────── -->
+    <aside class="sidebar">
+
+        <!-- Photo -->
+        <div class="sidebar-photo-wrap">
+            <!--
+                Place your photo in the same GitHub folder as index.html
+                and name it exactly: photo.jpg
+            -->
+            <img src="./photo.jpg" alt="Ayush Singh" onerror="this.style.display='none'">
+        </div>
+
+        <!-- Brand -->
+        <div class="brand">
+            <h1>Ayush Singh</h1>
+            <span class="tagline">Physics · Cosmology · Astronomy</span>
+            <p class="poetic">Thinking in equations, computing beauty of the universe.</p>
+        </div>
+
+        <!-- CV Download -->
+        <!--
+            Place your CV in the same GitHub folder as index.html
+            and name it exactly: cv.pdf
+        -->
+        <a href="./cv.pdf" target="_blank" rel="noopener noreferrer" class="cv-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/>
+            </svg>
+            Download CV
+        </a>
+
+        <!-- Navigation -->
+        <nav>
+            <ul class="nav-list">
+                <li class="nav-item"><button class="nav-btn active" data-num="01." data-target="home">Profile</button></li>
+                <li class="nav-item"><button class="nav-btn" data-num="02." data-target="about">About Me</button></li>
+                <li class="nav-item"><button class="nav-btn" data-num="03." data-target="experience">Research Experience</button></li>
+                <li class="nav-item"><button class="nav-btn" data-num="04." data-target="research">Projects</button></li>
+                <li class="nav-item"><button class="nav-btn" data-num="05." data-target="publications">Publications</button></li>
+                <li class="nav-item"><button class="nav-btn" data-num="06." data-target="coursework">Coursework</button></li>
+                <li class="nav-item"><button class="nav-btn" data-num="07." data-target="skills">Skills</button></li>
+                <li class="nav-item"><button class="nav-btn" data-num="08." data-target="contact">Contact</button></li>
+            </ul>
+        </nav>
+
+    </aside>
+
+    <!-- ─── MAIN CONTENT ──────────────────────────────── -->
+    <main class="main-content">
+
+        <!-- HOME -->
+        <section id="home" class="tab-pane active">
+            <div class="section-header">
+                <span class="mono">Fig. 1 — Overview</span>
+                <h2>Prologue</h2>
+            </div>
+
+            <p class="hero-pullquote">
+                "Just trying to make young me and mama proud — learning how humanity understands the universe while quietly adding a few ideas of my own along the way."
+            </p>
+            <p class="hero-sub">Exploring the time, structure, and composition of the universe.</p>
+
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <span class="mono">Education</span>
+                    <span class="val">Integrated Master of Science in Physics</span>
+                </div>
+                <div class="stat-item">
+                    <span class="mono">Minor</span>
+                    <span class="val">Mathematics &amp; Computing</span>
+                </div>
+                <div class="stat-item">
+                    <span class="mono">Institution</span>
+                    <span class="val">Birla Institute of Technology, Mesra</span>
+                </div>
+                <div class="stat-item">
+                    <span class="mono">Current Status</span>
+                    <span class="val">Final Year Undergraduate</span>
+                </div>
+                <div class="stat-item">
+                    <span class="mono">Academic Performance</span>
+                    <span class="val">CGPA: 8.92 / 10.0</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- ABOUT -->
+        <section id="about" class="tab-pane">
+            <div class="section-header">
+                <span class="mono">Fig. 2 — Me and My Future </span>
+                <h2>Biography</h2>
+            </div>
+
+            <div class="editorial-text">
+                <p> I am a senior-year Physics student at Birla Institute of Technology, Mesra, pursuing an Integrated M.Sc. in Physics with a minor in Mathematics and Computing. My interests lie primarily in astronomy and cosmology — particularly galaxies, dark matter, astroparticle physics, dark energy, modified gravity, gravitational waves, stellar evolution, and the large-scale structure of the universe. I enjoy exploring these fields through both observational perspectives and computational approaches.</p>
+                <p> At present, I am actively seeking internships and research opportunities in the areas mentioned above. I am also considering applying for a one-year postgraduate diploma or research-oriented program in theoretical physics or cosmology, rather than continuing the conventional five-year path. Programs and institutes such as Perimeter Institute and ICTP especially inspire me because of their strong focus on foundational physics and open scientific exploration.</p>
+                <p>In the long term, I hope to pursue a Ph.D. in computational cosmology, ideally combining elements of astrophysics, cosmology, numerical simulations, and theoretical physics. I am deeply curious about understanding the universe — not only through established ideas, but also by contributing a few thoughts and questions of my own along the way.</p>
+            </div>
+        </section>
+
+        <!-- EXPERIENCE -->
+        <section id="experience" class="tab-pane">
+            <div class="section-header">
+                <span class="mono">Fig. 3 — Fieldwork &amp; Roles</span>
+                <h2>Experience</h2>
+            </div>
+
+            <div class="timeline">
+
+                <!-- IIA -->
+                <article class="timeline-item">
+                    <div class="timeline-meta">
+                        <span class="mono">May 2025 —<br>Feb 2026</span>
+                        <br>
+                        <span class="mono">Hybrid</span>
+                    </div>
+                    <div class="timeline-content">
+                        <h3>Indian Institute of Astrophysics</h3>
+                        <h4>Research Intern</h4>
+                        <p>Investigated stellar populations in the western outskirts of the Small Magellanic Cloud using UVIT/AstroSat FUV &amp; NUV observations alongside Gaia optical and astrometric data. The project focused on cross-matching multiwavelength datasets to study multiple stellar populations and explore possible tidal interactions in the comparatively less-studied western region of the SMC.</p>
+                        <p><span class="meta-pill">Supervisors:</span> Prof. Annapurni Subramaniam &amp; Dr. Prasanta Kumar Nayak &amp; Dr. Sipra Hota</p>
+                    </div>
+                </article>
+
+                <!-- KSO -->
+                <article class="timeline-item">
+                    <div class="timeline-meta">
+                        <span class="mono">June 2025</span>
+                        <br>
+                        <span class="mono">IIA Kodaikanal</span>
+                    </div>
+                    <div class="timeline-content">
+                        <h3>KSO Summer School</h3>
+                        <h4>Participant</h4>
+                        <p>Intensive 10-day on-site programme covering solar physics, telescope operations, and observational planning. Engaged with spectral and photometric data, and attended lectures on General Relativity, planetary science, AGN, and stellar evolution.</p>
+                    </div>
+                </article>
+
+                <!-- BIT Mesra ME -->
+                <article class="timeline-item">
+                    <div class="timeline-meta">
+                        <span class="mono">May 2024 —<br>Apr 2025</span>
+                        <br>
+                    </div>
+                    <div class="timeline-content">
+                        <h3>Birla Institute of Technology, Mesra</h3>
+                        <h4>Research Intern</h4>
+                        <p>Led the setup, maintenance, and operational management of a newly established biogas plant, including systematic data collection and performance monitoring. Analyzed system data to optimize efficiency, waste composition ratios, and overall mechanical performance. Additionally, assisted Bachelor’s, Master’s, and Ph.D. students with experimental procedures, data analysis, and thesis-related research work.</p>
+                        <p><span class="meta-pill">Supervisor:</span> Dr. Rajeev Kumar, Mechanical Engineering</p>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+        <!-- RESEARCH -->
+        <section id="research" class="tab-pane">
+            <div class="section-header">
+                <span class="mono">Fig. 4 — Projects (kind of learning)</span>
+                <h2>Research</h2>
+            </div>
+
+            <div class="abstract-block">
+                <h3>Quasi-Normal Modes of Ellis–Bronnikov Wormholes</h3>
+
+                <div class="abstract-meta">
+                    <span class="mono">Supervisor: <strong>Dr. Suman Ghosh, Department of Physics, BIT Mesra</strong></span>
+                </div>
+
+                <p>Investigated quasi-normal modes (QNMs) of Ellis–Bronnikov wormholes under perturbative analysis to study their characteristic oscillation and damping behaviour.</p>
+                <p>Implemented and compared semi-analytical and numerical techniques, particularly the WKB approximation and Prony method, for accurate computation and analysis of QNM frequencies.</p>
+            </div>
+        </section>
+
+        <!-- PUBLICATIONS -->
+        <section id="publications" class="tab-pane">
+            <div class="section-header">
+                <span class="mono">Fig. 5 — Literature</span>
+                <h2>Publications &amp; Conference Presentations</h2>
+            </div>
+
+            <div class="publication-layout">
+
+                <!-- JOURNAL -->
+                <div class="publication-block">
+                    <h3>Journal Publication</h3>
+
+                    <p>
+                        <strong>Journal:</strong> Journal of Astrophysics and Astronomy (Springer)
+                    </p>
+
+                    <p>
+                        <strong>Status:</strong> Manuscript in Preparation · 3rd Author
+                    </p>
+
+                    <p>
+                        <strong>Title:</strong>
+                        <em>
+                            UVIT Study of the Magellanic Clouds (U-SMAC) V.
+                            UV Stellar Populations in the Western Outskirts
+                            of the Small Magellanic Cloud
+                        </em>
+                    </p>
+
+                    <p>
+                        <strong>Authors:</strong>
+                        Ayush Singh, Sipra Hota,
+                        Prasanta Kumar Nayak,
+                        and Annapurni Subramaniam
+                    </p>
+                </div>
+
+                <!-- DIVIDER -->
+                <div class="publication-divider"></div>
+
+                <!-- CONFERENCE -->
+                <div class="publication-block">
+                    <h3>Conference Presentation</h3>
+
+                    <p>
+                        <strong>Conference:</strong>
+                        <em>
+                            A Decade of AstroSat Observations:
+                            Science Outcomes and Future Prospects
+                        </em>
+                    </p>
+
+                    <p>
+                        <strong>Date:</strong> January 2026
+                    </p>
+
+                    <p>
+                        <strong>Host Organisation:</strong>
+                        U R Rao Satellite Centre (URSC),
+                        Bengaluru, India
+                    </p>
+
+                    <p>
+                        Presented a poster titled
+                        <em>
+                            “Exploring the Western Outskirts of the
+                            Small Magellanic Cloud: Tracing Foreground
+                            and SMC Stars with UVIT”
+                        </em>,
+                        co-authored with Sipra Hota,
+                        Prasanta Kumar Nayak,
+                        and Annapurni Subramaniam.
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- COURSEWORK -->
+        <section id="coursework" class="tab-pane">
+            <div class="section-header">
+                <span class="mono">Fig. 6 — Academic Foundation</span>
+                <h2>Coursework</h2>
+            </div>
+
+            <div class="coursework-layout">
+
+                <!-- CORE PHYSICS -->
+                <div class="data-group">
+                    <h3>Core Physics</h3>
+
+                    <p>
+                        Quantum Mechanics<br>
+                        Classical Mechanics<br>
+                        Classical Dynamics<br>
+                        Mathematical Physics<br>
+                        Experimental Physics<br>
+                        Waves &amp; Optics<br>
+                        Electricity &amp; Magnetism<br>
+                        Thermal Physics<br>
+                        Statistical Mechanics<br>
+                        Solid State Physics<br>
+                        Digital Systems &amp; Applications<br>
+                        Quantum Physics &amp; Applications
+                    </p>
+                </div>
+
+                <!-- ASTROPHYSICS -->
+                <div class="data-group">
+                    <h3>
+                        Astrophysics
+                        <span class="mono"
+                            style="font-size:0.6rem; color:var(--accent);">
+                            [Self-learned]
+                        </span>
+                    </h3>
+
+                    <p>
+                        Cosmological Models<br>
+                        Dark Matter &amp; Dark Energy<br>
+                        Astroparticle Physics<br>
+                        Modified Gravity Theories<br>
+                        Gravitational Waves<br>
+                        Observational Astronomy<br>
+                        Galactic Evolution<br>
+                        Stellar Evolution<br>
+                        Extragalactic Astronomy<br>
+                        Computational Cosmology<br>
+                        Black Hole Physics<br>
+                        High-Energy Astrophysics<br>
+                        Photometry &amp; Data Reduction<br>
+                        UV &amp; Multiwavelength Astronomy<br>
+                        Time-Domain Astronomy
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SKILLS -->
+        <section id="skills" class="tab-pane">
+            <div class="section-header">
+                <span class="mono">Fig. 7 — Technical Capabilities</span>
+                <h2>Skills &amp; Tools</h2>
+            </div>
+
+            <div class="data-grid">
+
+                <div class="data-group">
+                    <h3>Programming Languages</h3>
+                    <p>
+                        Python · R · MATLAB · C · C++<br>
+                        LaTeX · Linux Shell Scripting
+                    </p>
+                </div>
+
+                <div class="data-group">
+                    <h3>Scientific Computing</h3>
+                    <p>
+                        NumPy · SciPy · Pandas<br>
+                        AstroPy · Astroquery<br>
+                        Numerical Techniques
+                    </p>
+                </div>
+
+                <div class="data-group">
+                    <h3>Data Visualization</h3>
+                    <p>
+                        Matplotlib · Scientific Plotting<br>
+                        Data Interpretation &amp; Analysis
+                    </p>
+                </div>
+
+                <div class="data-group">
+                    <h3>Astronomical Data Analysis</h3>
+                    <p>
+                        SAO DS9 · Aladin Sky Atlas<br>
+                        TOPCAT · IRAF · DAOPHOT<br>
+                        CCDLAB · GLUE
+                    </p>
+                </div>
+
+                <div class="data-group">
+                    <h3>Catalogs &amp; Survey Data</h3>
+                    <p>
+                        Gaia DR3<br>
+                        AstroSat / UVIT<br>
+                        Multiwavelength Survey Data
+                    </p>
+                </div>
+
+                <div class="data-group">
+                    <h3>Modeling &amp; Simulations</h3>
+                    <p>
+                        Stellar Evolution Models (PARSEC)<br>
+                        Computational Astrophysics<br>
+                        Numerical Modelling
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- CONTACT -->
+        <section id="contact" class="tab-pane">
+            <div class="section-header">
+                <span class="mono">Fig. 8 — Contact &amp; Coordinates</span>
+                <h2>Contact</h2>
+            </div>
+
+            <ul class="contact-list">
+
+                <!-- EMAIL -->
+                <li>
+                    <div class="contact-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.5" stroke-linecap="round"
+                            stroke-linejoin="round">
+                            <rect x="2" y="4" width="20" height="16" rx="2"/>
+                            <path d="m22 7-8.97 5.7a1.94 1.94 0 01-2.06 0L2 7"/>
+                        </svg>
+                    </div>
+
+                    <div class="contact-info">
+                        <span class="mono">E Mail</span>
+
+                        <a href="mailto:iph10004.23@bitmesra.ac.in">
+                            iph10004.23@bitmesra.ac.in
+                        </a>
+
+                        <a href="mailto:ayushacasingh@gmail.com">
+                            ayushacasingh@gmail.com
+                        </a>
+                    </div>
+                </li>
+
+                <!-- LOCATION -->
+                <li>
+                    <div class="contact-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.5" stroke-linecap="round"
+                            stroke-linejoin="round">
+                            <path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 1116 0z"/>
+                            <circle cx="12" cy="10" r="3"/>
+                        </svg>
+                    </div>
+
+                    <div class="contact-info">
+                        <span class="mono">Current Coordinates</span>
+
+                        <span style="
+                            font-family: var(--font-serif);
+                            font-style: italic;
+                            font-size: 1.15rem;
+                            line-height: 1.8;
+                        ">
+                            Hostel-13 · Birla Institute of Technology, Mesra<br>
+                            Ranchi, Jharkhand · India
+                        </span>
+                    </div>
+                </li>
+
+                <!-- GITHUB -->
+                <li>
+                    <div class="contact-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.5" stroke-linecap="round"
+                            stroke-linejoin="round">
+                            <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 
+                            3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 
+                            6.44-7A5.44 5.44 0 0020 4.77 
+                            5.07 5.07 0 0019.91 1S18.73.65 
+                            16 2.48a13.38 13.38 0 00-7 
+                            0C6.27.65 5.09 1 5.09 1A5.07 
+                            5.07 0 005 4.77a5.44 5.44 0 
+                            00-1.5 3.78c0 5.42 3.3 6.61 
+                            6.44 7A3.37 3.37 0 009 
+                            18.13V22"/>
+                        </svg>
+                    </div>
+
+                    <div class="contact-info">
+                        <span class="mono">Research Repository</span>
+
+                        <a href="https://github.com/AyushSinghAca"
+                            target="_blank"
+                            rel="noopener noreferrer">
+                            github.com/AyushSinghAca
+                        </a>
+                    </div>
+                </li>
+
+            </ul>
+        </section>
+
+    </main>
+</div>
+
+<!-- ─── JavaScript ─────────────────────────────────── -->
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const navButtons = document.querySelectorAll('.nav-btn');
+        const tabPanes   = document.querySelectorAll('.tab-pane');
+
+        navButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                navButtons.forEach(b => b.classList.remove('active'));
+                tabPanes.forEach(p => p.classList.remove('active'));
+
+                btn.classList.add('active');
+
+                const target = document.getElementById(btn.getAttribute('data-target'));
+                if (target) {
+                    void target.offsetWidth; // force reflow to re-trigger animation
+                    target.classList.add('active');
+                }
+
+                if (window.innerWidth <= 768) {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                }
+            });
+        });
+    });
+</script>
+
+</body>
+</html>
