@@ -389,6 +389,33 @@
             color: var(--accent);
             margin-top: 0.4rem;
         }
+        .bio-layout {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.bio-block {
+    padding-right: 1rem;
+    border-right: 1px solid rgba(255,255,255,0.08);
+}
+
+.bio-block:last-child {
+    border-right: none;
+}
+
+.bio-block h3 {
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+    letter-spacing: 0.04em;
+}
+
+.bio-block p {
+    line-height: 1.95;
+    text-align: justify;
+    opacity: 0.92;
+}
 
         /* ─── EXPERIENCE ─────────────────────────────────── */
         .timeline-item {
@@ -814,19 +841,41 @@
             </div>
         </section>
 
-        <!-- ABOUT -->
-        <section id="about" class="tab-pane">
-            <div class="section-header">
-                <span class="mono">Fig. 2 — Me and My Future </span>
-                <h2>Biography</h2>
-            </div>
+         <!-- ABOUT -->
+<section id="about" class="tab-pane">
+    <div class="section-header">
+        <span class="mono">Fig. 2 — Me and My Future</span>
+        <h2>Biography</h2>
+    </div>
 
-            <div class="editorial-text">
-                <p> I am a senior-year Physics student at Birla Institute of Technology, Mesra, pursuing an Integrated M.Sc. in Physics with a minor in Mathematics and Computing. My interests lie primarily in astronomy and cosmology — particularly galaxies, dark matter, astroparticle physics, dark energy, modified gravity, gravitational waves, stellar evolution, and the large-scale structure of the universe. I enjoy exploring these fields through both observational perspectives and computational approaches.</p>
-                <p> At present, I am actively seeking internships and research opportunities in the areas mentioned above. I am also considering applying for a one-year postgraduate diploma or research-oriented program in theoretical physics or cosmology, rather than continuing the conventional five-year path. Programs and institutes such as Perimeter Institute and ICTP especially inspire me because of their strong focus on foundational physics and open scientific exploration.</p>
-                <p>In the long term, I hope to pursue a Ph.D. in computational cosmology, ideally combining elements of astrophysics, cosmology, numerical simulations, and theoretical physics. I am deeply curious about understanding the universe — not only through established ideas, but also by contributing a few thoughts and questions of my own along the way.</p>
-            </div>
-        </section>
+    <div class="bio-layout">
+
+        <div class="bio-block">
+            <h3>Academic Background</h3>
+
+            <p>
+                I am a senior-year Physics student at Birla Institute of Technology, Mesra, pursuing an Integrated M.Sc. in Physics with a minor in Mathematics and Computing. My interests lie primarily in astronomy and cosmology — particularly galaxies, dark matter, astroparticle physics, dark energy, modified gravity, gravitational waves, stellar evolution, and the large-scale structure of the universe. I enjoy exploring these fields through both observational and computational approaches.
+            </p>
+        </div>
+
+        <div class="bio-block">
+            <h3>Current Direction</h3>
+
+            <p>
+                At present, I am actively seeking internships and research opportunities in these domains. I am also considering applying for one-year postgraduate diploma or research-oriented programs in theoretical physics or cosmology rather than continuing along a conventional academic route. Institutes such as Perimeter Institute and ICTP especially inspire me because of their emphasis on foundational physics, open scientific thought, and deep curiosity about the universe.
+            </p>
+        </div>
+
+        <div class="bio-block">
+            <h3>Long-Term Vision</h3>
+
+            <p>
+                In the long term, I hope to pursue a Ph.D. in computational cosmology, ideally combining astrophysics, cosmology, numerical simulations, and theoretical physics. More than anything, I am driven by curiosity — trying to understand the universe not only through existing theories, but also by contributing a few thoughts and questions of my own along the way.
+            </p>
+        </div>
+
+    </div>
+</section>
 
         <!-- EXPERIENCE -->
         <section id="experience" class="tab-pane">
