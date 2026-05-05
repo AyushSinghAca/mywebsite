@@ -589,7 +589,47 @@
             height: 1px;
             background: rgba(255,255,255,0.08);
         }
+        .publication-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
 
+.publication-card {
+    padding: 2rem;
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 16px;
+    background: rgba(255,255,255,0.02);
+    backdrop-filter: blur(8px);
+    transition: all 0.3s ease;
+}
+
+.publication-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(255,255,255,0.15);
+}
+
+.publication-tag {
+    display: inline-block;
+    margin-bottom: 1rem;
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    color: var(--accent);
+    text-transform: uppercase;
+}
+
+.publication-card h3 {
+    margin-bottom: 1.4rem;
+    line-height: 1.5;
+    font-size: 1.3rem;
+}
+
+.publication-card p {
+    line-height: 1.9;
+    margin-bottom: 1rem;
+    opacity: 0.92;
+}
         /* ─── COURSEWORK & SKILLS ────────────────────────── */
         .data-grid {
             display: grid;
@@ -998,82 +1038,86 @@
         </section>
 
         <!-- PUBLICATIONS -->
-        <section id="publications" class="tab-pane">
-            <div class="section-header">
-                <h2>Publications &amp; Conference Presentations</h2>
-            </div>
+<section id="publications" class="tab-pane">
+    <div class="section-header">
+        <h2>Publications &amp; Conference Presentations</h2>
+    </div>
 
-            <div class="publication-layout">
+    <div class="publication-grid">
 
-                <!-- JOURNAL -->
-                <div class="publication-block">
-                    <h3>Journal Publication</h3>
+        <!-- JOURNAL -->
+        <div class="publication-card">
+            <span class="publication-tag mono">
+                Journal Publication
+            </span>
 
-                    <p>
-                        <strong>Journal:</strong> Journal of Astrophysics and Astronomy (Springer)
-                    </p>
+            <h3>
+                UVIT Study of the Magellanic Clouds (U-SMAC) V.
+            </h3>
 
-                    <p>
-                        <strong>Status:</strong> Manuscript in Preparation · 3rd Author
-                    </p>
+            <p>
+                <strong>Journal:</strong>
+                Journal of Astrophysics and Astronomy (Springer)
+            </p>
 
-                    <p>
-                        <strong>Title:</strong>
-                        <em>
-                            UVIT Study of the Magellanic Clouds (U-SMAC) V.
-                            UV Stellar Populations in the Western Outskirts
-                            of the Small Magellanic Cloud
-                        </em>
-                    </p>
+            <p>
+                <strong>Status:</strong>
+                Manuscript in Preparation · 3rd Author
+            </p>
 
-                    <p>
-                        <strong>Authors:</strong>
-                        Ayush Singh, Sipra Hota,
-                        Prasanta Kumar Nayak,
-                        and Annapurni Subramaniam
-                    </p>
-                </div>
+            <p>
+                <strong>Focus:</strong>
+                UV stellar populations in the western outskirts
+                of the Small Magellanic Cloud.
+            </p>
 
-                <!-- DIVIDER -->
-                <div class="publication-divider"></div>
+            <p>
+                <strong>Authors:</strong>
+                Ayush Singh · Sipra Hota ·
+                Prasanta Kumar Nayak ·
+                Annapurni Subramaniam
+            </p>
+        </div>
 
-                <!-- CONFERENCE -->
-                <div class="publication-block">
-                    <h3>Conference Presentation</h3>
+        <!-- CONFERENCE -->
+        <div class="publication-card">
+            <span class="publication-tag mono">
+                Conference Presentation
+            </span>
 
-                    <p>
-                        <strong>Conference:</strong>
-                        <em>
-                            A Decade of AstroSat Observations:
-                            Science Outcomes and Future Prospects
-                        </em>
-                    </p>
+            <h3>
+                A Decade of AstroSat Observations
+            </h3>
 
-                    <p>
-                        <strong>Date:</strong> January 2026
-                    </p>
+            <p>
+                <strong>Date:</strong>
+                January 2026
+            </p>
 
-                    <p>
-                        <strong>Host Organisation:</strong>
-                        U R Rao Satellite Centre (URSC),
-                        Bengaluru, India
-                    </p>
+            <p>
+                <strong>Host:</strong>
+                U R Rao Satellite Centre (URSC),
+                Bengaluru, India
+            </p>
 
-                    <p>
-                        Presented a poster titled
-                        <em>
-                            “Exploring the Western Outskirts of the
-                            Small Magellanic Cloud: Tracing Foreground
-                            and SMC Stars with UVIT”
-                        </em>,
-                        co-authored with Sipra Hota,
-                        Prasanta Kumar Nayak,
-                        and Annapurni Subramaniam.
-                    </p>
-                </div>
+            <p>
+                Presented a poster titled:
+                <em>
+                    “Exploring the Western Outskirts of the
+                    Small Magellanic Cloud: Tracing Foreground
+                    and SMC Stars with UVIT”
+                </em>
+            </p>
 
-            </div>
-        </section>
+            <p>
+                Co-authored with Sipra Hota,
+                Prasanta Kumar Nayak,
+                and Annapurni Subramaniam.
+            </p>
+        </div>
+
+    </div>
+</section>
 
         <!-- COURSEWORK -->
         <section id="coursework" class="tab-pane">
