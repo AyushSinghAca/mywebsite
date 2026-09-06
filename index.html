@@ -11,7 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 
     <style>
-        /* ─── CSS Variables ─────────────────────────────── */
+        /* CSS Variables */
         :root {
             --bg:        #F5F3ED;
             --bg-card:   #EDEAE0;
@@ -30,9 +30,7 @@
             --ease:      cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        /* ─── Reset ─────────────────────────────────────── */
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-
         html { scroll-behavior: smooth; }
 
         body {
@@ -45,7 +43,6 @@
             -webkit-font-smoothing: antialiased;
         }
 
-        /* ─── Grain Overlay ─────────────────────────────── */
         body::before {
             content: '';
             position: fixed;
@@ -55,25 +52,19 @@
             z-index: 9999;
         }
 
-        /* ─── Background Image ──────────────────────────── */
-        /*
-         * DROP your universe image as "bg.jpg" in the same folder.
-         * It will be clearly visible outside the text box.
-         */
         .bg-layer {
             position: fixed;
             inset: 0;
             background-image: url('./bg.jpg');
             background-size: cover;
             background-position: center;
-            opacity: 1; /* Fully visible background outside the box */
+            opacity: 1;
             pointer-events: none;
             z-index: 0;
         }
 
         ::selection { background: var(--ink); color: var(--bg); }
 
-        /* ─── Typography ─────────────────────────────────── */
         h1, h2, h3, h4 {
             font-family: var(--font-serif);
             font-weight: 600;
@@ -100,7 +91,6 @@
         }
         a:hover { color: var(--accent); border-bottom-color: var(--accent); }
 
-        /* ─── Page Layout ────────────────────────────────── */
         .layout {
             display: grid;
             grid-template-columns: var(--sidebar-w) 1fr;
@@ -109,9 +99,7 @@
             margin: 2rem auto;
             position: relative;
             z-index: 1;
-            
-            /* Glassmorphism Box */
-            background: rgba(245, 243, 237, 0.85); /* Blended translucent box */
+            background: rgba(245, 243, 237, 0.85);
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
             border-radius: 16px;
@@ -119,7 +107,6 @@
             border: 1px solid rgba(255, 255, 255, 0.6);
         }
 
-        /* ─── Sidebar ────────────────────────────────────── */
         .sidebar {
             position: sticky;
             top: 2rem;
@@ -134,7 +121,6 @@
         }
         .sidebar::-webkit-scrollbar { display: none; }
 
-        /* ── Photo ── */
         .sidebar-photo-wrap {
             width: 88px;
             height: 88px;
@@ -146,10 +132,6 @@
             flex-shrink: 0;
             position: relative;
         }
-        /*
-         * DROP your photo as "photo.jpg" in the same folder.
-         * The placeholder circle shows if the file is missing.
-         */
         .sidebar-photo-wrap img {
             width: 100%;
             height: 100%;
@@ -157,7 +139,6 @@
             display: block;
         }
         .sidebar-photo-wrap::after {
-            /* Fallback ring that shows if image fails */
             content: 'A·S';
             position: absolute;
             inset: 0;
@@ -171,7 +152,6 @@
             z-index: -1;
         }
 
-        /* ── Brand text ── */
         .brand h1 {
             font-size: 2rem;
             letter-spacing: -0.025em;
@@ -199,10 +179,6 @@
             margin-bottom: 2.5rem;
         }
 
-        /* ── CV Button ── */
-        /*
-         * DROP your CV as "cv.pdf" in the same folder.
-         */
         .cv-btn {
             display: inline-flex;
             align-items: center;
@@ -215,7 +191,7 @@
             letter-spacing: 0.08em;
             text-transform: uppercase;
             color: var(--ink);
-            border-bottom: 1px solid var(--ink); /* override <a> reset */
+            border-bottom: 1px solid var(--ink);
             transition: background 0.25s var(--ease), color 0.25s var(--ease);
             margin-bottom: 2.5rem;
             width: fit-content;
@@ -227,7 +203,6 @@
         }
         .cv-btn svg { width: 11px; height: 11px; flex-shrink: 0; }
 
-        /* ── Navigation ── */
         .nav-list {
             list-style: none;
             margin-top: auto;
@@ -272,14 +247,12 @@
         }
         .nav-btn.active::before { color: var(--accent); }
 
-        /* ─── Main Content ───────────────────────────────── */
         .main-content {
             padding: 5rem 7rem 5rem 5.5rem;
             position: relative;
             z-index: 1;
         }
 
-        /* ─── Tab Panes ──────────────────────────────────── */
         .tab-pane { display: none; max-width: 760px; }
 
         .tab-pane.active {
@@ -292,7 +265,6 @@
             to   { opacity: 1; transform: translateY(0); }
         }
 
-        /* ─── Section Header ─────────────────────────────── */
         .section-header {
             margin-bottom: 3.5rem;
         }
@@ -308,7 +280,6 @@
             letter-spacing: -0.025em;
         }
 
-        /* ─── Decorative rule ────────────────────────────── */
         .rule {
             display: flex;
             align-items: center;
@@ -329,7 +300,6 @@
             white-space: nowrap;
         }
 
-        /* ─── HOME ───────────────────────────────────────── */
         .hero-pullquote {
             font-family: var(--font-serif);
             font-size: 2rem;
@@ -379,7 +349,6 @@
             display: block;
         }
 
-        /* ─── ABOUT ──────────────────────────────────────── */
         .editorial-text {
             column-count: 2;
             column-gap: 3rem;
@@ -425,10 +394,9 @@
         .bio-divider {
             width: 100%;
             height: 1px;
-            background: rgba(24, 23, 26, 0.08); /* Fixed white rgba to match original light theme */
+            background: rgba(24, 23, 26, 0.08);
         }
 
-        /* ─── EXPERIENCE ─────────────────────────────────── */
         .timeline-item {
             display: grid;
             grid-template-columns: 140px 1fr;
@@ -445,7 +413,6 @@
             padding-bottom: 0;
         }
 
-        /* Vertical connector line */
         .timeline-item::before {
             content: '';
             position: absolute;
@@ -457,7 +424,6 @@
         }
         .timeline-item:last-child::before { display: none; }
 
-        /* Dot on the line */
         .timeline-item::after {
             content: '';
             position: absolute;
@@ -481,20 +447,19 @@
         }
 
         .org-heading {
-    display: flex;
-    align-items: center;
-    gap: 0.7rem;
-    margin-bottom: 0.2rem;
-}
-.org-logo {
-    width: 30px;
-    height: 30px;
-    object-fit: contain;
-    border-radius: 4px;
-    flex-shrink: 0;
-}
-.org-heading h3 { margin-bottom: 0; }
-        
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+            margin-bottom: 0.2rem;
+        }
+        .org-logo {
+            width: 30px;
+            height: 30px;
+            object-fit: contain;
+            border-radius: 4px;
+            flex-shrink: 0;
+        }
+        .org-heading h3 { margin-bottom: 0; }
 
         .timeline-content h4 {
             font-family: var(--font-sans);
@@ -517,7 +482,6 @@
             margin-bottom: 0.25rem;
         }
 
-        /* ─── RESEARCH / PROJECTS ────────────────────────── */
         .abstract-block {
             background: transparent;
             padding: 2.8rem;
@@ -554,7 +518,12 @@
 
         .abstract-meta .mono strong { color: var(--accent); }
 
-        /* ─── PUBLICATIONS ───────────────────────────────── */
+        .abstract-meta .org-heading {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
         .coming-soon {
             display: flex;
             flex-direction: column;
@@ -583,7 +552,7 @@
             text-transform: uppercase;
             color: rgba(24, 23, 26, 0.3);
         }
-        
+
         .publication-layout {
             display: flex;
             flex-direction: column;
@@ -610,7 +579,7 @@
         .publication-divider {
             width: 100%;
             height: 1px;
-            background: rgba(24, 23, 26, 0.08); /* Fixed white rgba to match original light theme */
+            background: rgba(24, 23, 26, 0.08);
         }
         .publication-grid {
             display: grid;
@@ -653,8 +622,7 @@
             margin-bottom: 1rem;
             opacity: 0.92;
         }
-        
-        /* ─── COURSEWORK & SKILLS ────────────────────────── */
+
         .data-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -703,7 +671,6 @@
             line-height: 1.9;
         }
 
-        /* ─── HONORS / VOLUNTEER / WORKSHOPS ─────────────── */
         .plain-list {
             list-style: none;
             margin-top: 0.5rem;
@@ -735,7 +702,6 @@
 
         .plain-list .li-body p { margin-bottom: 0; opacity: 0.92; }
 
-        /* ─── CONTACT ─────────────────────────────────────── */
         .contact-list { list-style: none; margin-top: 2rem; }
 
         .contact-list li {
@@ -776,7 +742,6 @@
             display: block;
         }
 
-        /* ─── Watermark ──────────────────────────────────── */
         .watermark {
             position: fixed;
             right: -6vw;
@@ -792,7 +757,6 @@
             user-select: none;
         }
 
-        /* ─── Responsive ─────────────────────────────────── */
         @media (max-width: 1100px) {
             .main-content { padding: 4rem 4rem 4rem 4rem; }
         }
@@ -855,7 +819,7 @@
             .watermark { display: none; }
 
             .section-header h2 { font-size: 2.4rem; }
-            
+
             .publication-grid { grid-template-columns: 1fr; }
         }
     </style>
@@ -867,30 +831,19 @@
 
 <div class="layout">
 
-    <!-- ─── SIDEBAR ───────────────────────────────────── -->
+    <!-- SIDEBAR -->
     <aside class="sidebar">
 
-        <!-- Photo -->
         <div class="sidebar-photo-wrap">
-            <!--
-                Place your photo in the same GitHub folder as index.html
-                and name it exactly: ayush.jpeg
-            -->
             <img src="./ayush.jpeg" alt="Ayush Singh" onerror="this.style.display='none'">
         </div>
 
-        <!-- Brand -->
         <div class="brand">
             <h1>Ayush Singh</h1>
             <span class="tagline">Physics · Observational Astronomy ·  Computational Cosmology · Gravitational Physics · Statistical Cosmology</span>
             <p class="poetic">Exploring Cosmos through computation, observation, and theory..</p>
         </div>
 
-        <!-- CV Download -->
-        <!--
-            Place your CV in the same GitHub folder as index.html
-            and name it exactly: CV_singh_ayush.pdf
-        -->
         <a href="./CV_singh_ayush .pdf" target="_blank" rel="noopener noreferrer" class="cv-btn">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/>
@@ -898,7 +851,6 @@
             My CV
         </a>
 
-        <!-- Navigation -->
         <nav>
             <ul class="nav-list">
                 <li class="nav-item"><button class="nav-btn active" data-num="01." data-target="home">Profile</button></li>
@@ -916,7 +868,7 @@
 
     </aside>
 
-    <!-- ─── MAIN CONTENT ──────────────────────────────── -->
+    <!-- MAIN CONTENT -->
     <main class="main-content">
 
         <!-- HOME -->
@@ -933,20 +885,7 @@
             <div class="hero-stats">
                 <div class="stat-item">
                     <span class="mono">Major</span>
-                    <span class="val"> Physics</span>.org-heading {
-    display: flex;
-    align-items: center;
-    gap: 0.7rem;
-    margin-bottom: 0.2rem;
-}
-.org-logo {
-    width: 30px;
-    height: 30px;
-    object-fit: contain;
-    border-radius: 4px;
-    flex-shrink: 0;
-}
-.org-heading h3 { margin-bottom: 0; }
+                    <span class="val"> Physics</span>
                 </div>
                 <div class="stat-item">
                     <span class="mono">Minor</span>
@@ -979,7 +918,6 @@
 
     <div class="book-style-layout">
 
-        <!-- ACADEMIC BACKGROUND -->
         <div class="bio-paragraph">
             <h3>Academic Background</h3>
 
@@ -994,7 +932,6 @@
 
         <div class="bio-divider"></div>
 
-        <!-- RESEARCH DIRECTION -->
         <div class="bio-paragraph">
             <h3>Research Direction</h3>
 
@@ -1017,9 +954,6 @@
 
         <div class="bio-divider"></div>
 
-    
-
-        <!-- LONG TERM -->
         <div class="bio-paragraph">
             <h3>Long-Term Vision</h3>
 
@@ -1032,18 +966,14 @@
     </div>
 </section>
 
-
-
-        
-
-              <!-- EXPERIENCE -->
+        <!-- EXPERIENCE -->
         <section id="experience" class="tab-pane">
             <div class="section-header">
                 <h2>Experience</h2>
             </div>
- 
+
             <div class="timeline">
- 
+
                 <!-- CAMBRIDGE -->
                 <article class="timeline-item">
     <div class="timeline-meta">
@@ -1051,32 +981,32 @@
         <br>
         <span class="mono">On-site</span>
     </div>
- 
+
     <div class="timeline-content">
-        <h3><div class="org-heading">
-    <img class="org-logo" src="./logos/University_of_Cambridge-Logo.wine.svg" alt="University of Cambridge logo" onerror="this.style.display='none'">
-    <h3><a href="https://www.ast.cam.ac.uk/" target="_blank" rel="noopener noreferrer">Institute of Astronomy, University of Cambridge</a></h3>
-</div></h3>
+        <div class="org-heading">
+            <img class="org-logo" src="./logos/University_of_Cambridge-Logo.wine.svg" alt="University of Cambridge logo" onerror="this.style.display='none'">
+            <h3><a href="https://www.ast.cam.ac.uk/" target="_blank" rel="noopener noreferrer">Institute of Astronomy, University of Cambridge</a></h3>
+        </div>
         <h4>Research Intern — Joint Bayesian Inference Pipeline for Dark-Siren Gravitational-Wave Cosmology</h4>
- 
+
         <p>
             Developed a joint Bayesian pipeline combining gravitational-wave strain and galaxy-catalog likelihoods for precision H₀ inference and scalable dark-siren analyses.
         </p>
- 
+
         <p>
             Identified and resolved a scalability bottleneck in CHIMERA's batch-based likelihood, enabling its use in gradient-based inference and high-event-rate datasets, and derived a point-wise, differentiable reformulation of the likelihood for direct integration with BlackJAX — eliminating reliance on pre-computed GW posterior samples.
         </p>
- 
+
         <p>
             Gained hands-on experience with HPC/GPU computing by implementing a chunked, GPU-scalable galaxy-catalog likelihood over 22.6 million real GLADE+ galaxies, reproducing the unbatched computation to full floating-point precision, and validated the pipeline on real, integrated LVK O1–O4b sensitivity data (~2.5 million injections), enabling application to real gravitational-wave events.
         </p>
- 
+
         <p>
-            <span class="meta-pill">Advisors:</span> <a href="https://www.kicc.cam.ac.uk/directory/wh260" target="_blank" rel="noopener noreferrer">Dr. Will Handley</a> &amp; <a href="https://www.kicc.cam.ac.uk/staff/david-yallup" target="_blank" rel="noopener noreferrer">David Yallup</a>
+            <span class="meta-pill">Advisors:</span> <a href="https://www.kicc.cam.ac.uk/directory/wh260" target="_blank" rel="noopener noreferrer">Prof. Will Handley</a> &amp; <a href="https://www.kicc.cam.ac.uk/staff/david-yallup" target="_blank" rel="noopener noreferrer">Dr. David Yallup</a>
         </p>
     </div>
 </article>
- 
+
                 <!-- IIT HYDERABAD -->
                 <article class="timeline-item">
     <div class="timeline-meta">
@@ -1084,41 +1014,28 @@
         <br>
         <span class="mono">On-site</span>
     </div>
- 
+
     <div class="timeline-content">
-        <h3><div class="org-heading">
-    <img class="org-logo" src="./logos/iith.png" alt="IIT Hyderabad logo" onerror="this.style.display='none'">
-    <h3><a href="https://iith.ac.in/" target="_blank" rel="noopener noreferrer">Indian Institute of Technology, Hyderabad</a></h3>
-</div></h3>
+        <div class="org-heading">
+            <img class="org-logo" src="./logos/iith.png" alt="IIT Hyderabad logo" onerror="this.style.display='none'">
+            <h3><a href="https://iith.ac.in/" target="_blank" rel="noopener noreferrer">Indian Institute of Technology, Hyderabad</a></h3>
+        </div>
         <h4>Research Intern — Dark Matter–Baryon Scattering Constraints from the Milky Way Circumgalactic Medium (CGM)</h4>
- 
+
         <p>
             Derived upper limits on the dark matter–baryon scattering cross section using the thermal properties of the Milky Way's circumgalactic medium (CGM). Investigated four velocity-dependent interaction models (n = 2, 0, −2, −4) and compared the resulting CGM constraints with existing CMB limits.
         </p>
- 
+
         <p>
             Demonstrated that CGM-based constraints are comparable to CMB limits for n = 2 and n = 0, establishing the CGM as a complementary probe of dark matter interactions. Developed the analysis and results into a research manuscript, currently in preparation.
         </p>
- 
-        <p>.org-heading {
-    display: flex;
-    align-items: center;
-    gap: 0.7rem;
-    margin-bottom: 0.2rem;
-}
-.org-logo {
-    width: 30px;
-    height: 30px;
-    object-fit: contain;
-    border-radius: 4px;
-    flex-shrink: 0;
-}
-.org-heading h3 { margin-bottom: 0; }
+
+        <p>
             <span class="meta-pill">Advisor:</span> <a href="https://iith.ac.in/phy/divyasachdeva/" target="_blank" rel="noopener noreferrer">Dr. Divya Sachdeva</a>
         </p>
     </div>
 </article>
- 
+
                 <!-- IIA -->
                 <article class="timeline-item">
     <div class="timeline-meta">
@@ -1126,32 +1043,32 @@
         <br>
         <span class="mono">Hybrid</span>
     </div>
- 
+
     <div class="timeline-content">
-        <h3><div class="org-heading">
-    <img class="org-logo" src="./logos/iia.png" alt="Indian Institute of Astrophysics logo" onerror="this.style.display='none'">
-    <h3><a href="https://www.iiap.res.in/" target="_blank" rel="noopener noreferrer">Indian Institute of Astrophysics</a></h3>
-</div></h3>
+        <div class="org-heading">
+            <img class="org-logo" src="./logos/iia.png" alt="Indian Institute of Astrophysics logo" onerror="this.style.display='none'">
+            <h3><a href="https://www.iiap.res.in/" target="_blank" rel="noopener noreferrer">Indian Institute of Astrophysics</a></h3>
+        </div>
         <h4>Research Intern (First Author) — Disentangling Stellar Populations in the Western Halo of the SMC Using UVIT and Gaia DR3</h4>
- 
+
         <p>
             Investigated stellar populations in the western outskirts of the Small Magellanic Cloud as the first author and primary investigator, leading the full research workflow from data acquisition to analysis and interpretation. The study combined ultraviolet observations from UVIT/AstroSat FUV &amp; NUV  with optical photometry and astrometric data from Gaia to construct a multiwavelength view of the region.
         </p>
- 
+
         <p>
             I developed and executed the complete data analysis pipeline, including cross-matching multi-catalog datasets, source cleaning and filtering, and construction of stellar population diagnostics such as color–magnitude diagrams and spatial distribution maps. Applied advanced analysis techniques such as vector point diagrams, Gaussian Mixture Models (GMM), and kernel density estimation (KDE) to study stellar kinematics and separate Milky Way foreground stars (including 47 Tucanae) from SMC members, followed by isochrone fitting on UV/optical color–magnitude and color–color diagrams.
         </p>
- 
+
         <p>
             The analysis focused on identifying multiple stellar populations in this relatively underexplored outer region of the Small Magellanic Cloud and investigating possible tidal interactions. The results suggest population gradients and dynamical influence in the western outskirts, contributing to the understanding of the galaxy’s outer structure and evolutionary history.
         </p>
- 
+
         <p>
             <span class="meta-pill">Supervisors:</span> <a href="https://www.iiap.res.in/people/director/" target="_blank" rel="noopener noreferrer">Prof. Annapurni Subramaniam</a> &amp; <a href="https://www.iiap.res.in/people/profile/student/sipra-hota/" target="_blank" rel="noopener noreferrer">Dr. Sipra Hota</a>
         </p>
     </div>
 </article>
- 
+
                 <!-- BIT Mesra ME -->
                 <article class="timeline-item">
     <div class="timeline-meta">
@@ -1159,26 +1076,26 @@
         <br>
         <span class="mono">On-site</span>
     </div>
- 
+
     <div class="timeline-content">
-        <h3><div class="org-heading">
-    <img class="org-logo" src="./logos/bitmesra.png" alt="BIT Mesra logo" onerror="this.style.display='none'">
-    <h3><a href="https://www.bitmesra.ac.in/" target="_blank" rel="noopener noreferrer">Birla Institute of Technology, Mesra</a></h3>
-</div></h3>
+        <div class="org-heading">
+            <img class="org-logo" src="./logos/bitmesra.png" alt="BIT Mesra logo" onerror="this.style.display='none'">
+            <h3><a href="https://www.bitmesra.ac.in/" target="_blank" rel="noopener noreferrer">Birla Institute of Technology, Mesra</a></h3>
+        </div>
         <h4>Research Intern — Performance Analysis and Optimization of a Consumption-Scale Biogas Plant</h4>
- 
+
         <p>
             Contributed to the establishment and operational optimization of a newly commissioned biogas plant, focusing on system setup, performance monitoring, and experimental data collection. The work involved designing and maintaining structured datasets to track plant efficiency, waste input composition, and energy output under varying operational conditions.
         </p>
- 
+
         <p>
             Performed data-driven analysis to evaluate system performance and identify optimal waste-to-feedstock ratios, with the goal of improving overall biogas yield and mechanical efficiency. Insights from the analysis were used to support iterative adjustments in operational parameters.
         </p>
- 
+
         <p>
             In addition to research responsibilities, provided technical assistance to Bachelor’s, Master’s, and Ph.D. students in data interpretation, and thesis-related analytical work. The project went on to win an INR 10,000 award at the BIT NISHAN Business Competition.
         </p>
- 
+
         <p>
             <span class="meta-pill">Supervisor:</span> <a href="https://bitmesra.ac.in/Show_profile/474455354E427932535479684B6D654F4D2F42506C513D3D" target="_blank" rel="noopener noreferrer">Dr. Rajeev Kumar</a>, Mechanical Engineering
         </p>
@@ -1186,7 +1103,6 @@
 </article>
             </div>
         </section>
- 
 
         <!-- RESEARCH -->
         <section id="research" class="tab-pane">
@@ -1194,7 +1110,6 @@
                 <h2>Projects (kind of learning)</h2>
             </div>
 
-           
       <!-- PREVIOUS PROJECT -->
 <div class="abstract-block">
     <div class="abstract-meta">
@@ -1207,7 +1122,11 @@
         <span class="mono">
             Supervisor:
             <strong>
-                Dr. Suman Ghosh · Department of Physics, Birla Institute of Technology.
+                <span class="org-heading">
+                    <img class="org-logo" src="./logos/bitmesra.png" alt="BIT Mesra logo" onerror="this.style.display='none'">
+                    <a href="https://bitmesra.ac.in/Show_profile/6C495252676C6647516A44364E33447935546C5066513D3D" target="_blank" rel="noopener noreferrer">Dr. Suman Ghosh</a>
+                </span>
+                · Department of Physics, Birla Institute of Technology.
             </strong>
         </span>
     </div>
@@ -1238,7 +1157,6 @@
 
             <div class="publication-grid">
 
-                <!-- JOURNAL 1 -->
                 <div class="publication-card">
                     <span class="publication-tag">Journal Publication</span>
 
@@ -1261,7 +1179,6 @@
                     </p>
                 </div>
 
-                <!-- JOURNAL 2 -->
                 <div class="publication-card">
                     <span class="publication-tag">Manuscript in Preparation</span>
 
@@ -1280,7 +1197,6 @@
                     </p>
                 </div>
 
-                <!-- CONFERENCE -->
                 <div class="publication-card">
                     <span class="publication-tag">Conference Presentation</span>
 
@@ -1309,7 +1225,7 @@
             View Poster
         </a>
     </p>
-                    
+
                 </div>
 
             </div>
@@ -1347,7 +1263,6 @@
 
             <div class="coursework-layout">
 
-                <!-- CORE PHYSICS -->
                 <div class="data-group">
                     <h3>Core Physics</h3>
 
@@ -1369,7 +1284,6 @@
                     </p>
                 </div>
 
-                <!-- ASTROPHYSICS -->
                 <div class="data-group">
                     <h3>
                         Astrophysics
@@ -1391,7 +1305,7 @@
                         Computational Cosmology<br>
                         Photometry &amp; Data Reduction<br>
                         UV &amp; Multiwavelength Astronomy<br>
-                        
+
                     </p>
                 </div>
 
@@ -1546,7 +1460,6 @@
 
             <ul class="contact-list">
 
-                <!-- PHONE -->
                 <li>
                     <div class="contact-icon">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -1562,7 +1475,6 @@
                     </div>
                 </li>
 
-                <!-- EMAIL -->
                 <li>
                     <div class="contact-icon">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -1586,7 +1498,6 @@
                     </div>
                 </li>
 
-                <!-- LOCATION -->
                 <li>
                     <div class="contact-icon">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -1614,7 +1525,6 @@
                     </div>
                 </li>
 
-                <!-- WEBSITE -->
                 <li>
                     <div class="contact-icon">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -1636,21 +1546,20 @@
                     </div>
                 </li>
 
-                <!-- GITHUB -->
                 <li>
                     <div class="contact-icon">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
                             stroke-width="1.5" stroke-linecap="round"
                             stroke-linejoin="round">
-                            <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 
-                            3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 
-                            6.44-7A5.44 5.44 0 0020 4.77 
-                            5.07 5.07 0 0019.91 1S18.73.65 
-                            16 2.48a13.38 13.38 0 00-7 
-                            0C6.27.65 5.09 1 5.09 1A5.07 
-                            5.07 0 005 4.77a5.44 5.44 0 
-                            00-1.5 3.78c0 5.42 3.3 6.61 
-                            6.44 7A3.37 3.37 0 009 
+                            <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37
+                            3.37 0 00-.94-2.61c3.14-.35 6.44-1.54
+                            6.44-7A5.44 5.44 0 0020 4.77
+                            5.07 5.07 0 0019.91 1S18.73.65
+                            16 2.48a13.38 13.38 0 00-7
+                            0C6.27.65 5.09 1 5.09 1A5.07
+                            5.07 0 005 4.77a5.44 5.44 0
+                            00-1.5 3.78c0 5.42 3.3 6.61
+                            6.44 7A3.37 3.37 0 009
                             18.13V22"/>
                         </svg>
                     </div>
@@ -1669,16 +1578,14 @@
             </ul>
         </section>
 
-        <!-- LAST UPDATED -->
         <p class="mono" style="margin-top:4rem; opacity:0.6;">
             Last Updated · September 2026
         </p>
 
     </main>
-    
+
 </div>
 
-<!-- ─── JavaScript ─────────────────────────────────── -->
 <script>
     document.addEventListener('DOMContentLoaded', () => {
         const navButtons = document.querySelectorAll('.nav-btn');
@@ -1693,7 +1600,7 @@
 
                 const target = document.getElementById(btn.getAttribute('data-target'));
                 if (target) {
-                    void target.offsetWidth; // force reflow to re-trigger animation
+                    void target.offsetWidth;
                     target.classList.add('active');
                 }
 
