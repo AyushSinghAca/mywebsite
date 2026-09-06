@@ -480,6 +480,22 @@
             margin-bottom: 0.2rem;
         }
 
+        .org-heading {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    margin-bottom: 0.2rem;
+}
+.org-logo {
+    width: 30px;
+    height: 30px;
+    object-fit: contain;
+    border-radius: 4px;
+    flex-shrink: 0;
+}
+.org-heading h3 { margin-bottom: 0; }
+        
+
         .timeline-content h4 {
             font-family: var(--font-sans);
             font-size: 0.85rem;
@@ -917,7 +933,20 @@
             <div class="hero-stats">
                 <div class="stat-item">
                     <span class="mono">Major</span>
-                    <span class="val"> Physics</span>
+                    <span class="val"> Physics</span>.org-heading {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    margin-bottom: 0.2rem;
+}
+.org-logo {
+    width: 30px;
+    height: 30px;
+    object-fit: contain;
+    border-radius: 4px;
+    flex-shrink: 0;
+}
+.org-heading h3 { margin-bottom: 0; }
                 </div>
                 <div class="stat-item">
                     <span class="mono">Minor</span>
@@ -988,30 +1017,16 @@
 
         <div class="bio-divider"></div>
 
-        <!-- CURRENT DIRECTION -->
-        <div class="bio-paragraph">
-            <h3>Current Direction</h3>
-
-            <p>
-                At present, I am seeking research opportunities in computational astrophysics, cosmology, and gravitational physics, particularly projects involving numerical methods, statistical inference, simulation techniques, and large-scale astronomical datasets.
-            </p>
-
     
-        </div>
-
-        <div class="bio-divider"></div>
 
         <!-- LONG TERM -->
         <div class="bio-paragraph">
             <h3>Long-Term Vision</h3>
 
             <p>
-                In the long term, I hope to pursue a Ph.D. in computational cosmology or astrophysics, ideally combining theoretical physics, numerical simulations, observational data analysis, and statistical methods to study large-scale cosmic structure and gravitational phenomena.
+                In the long term, I hope to pursue a Ph.D. in computational cosmology or astrophysics, ideally combining theoretical physics, numerical simulations, observational data analysis, and statistical methods.
             </p>
 
-            <p>
-                More than anything, I am driven by curiosity — trying to understand how humanity interprets the universe while contributing a few ideas of my own along the way.
-            </p>
         </div>
 
     </div>
@@ -1021,14 +1036,14 @@
 
         
 
-        <!-- EXPERIENCE -->
+              <!-- EXPERIENCE -->
         <section id="experience" class="tab-pane">
             <div class="section-header">
                 <h2>Experience</h2>
             </div>
-
+ 
             <div class="timeline">
-
+ 
                 <!-- CAMBRIDGE -->
                 <article class="timeline-item">
     <div class="timeline-meta">
@@ -1036,29 +1051,32 @@
         <br>
         <span class="mono">On-site</span>
     </div>
-
+ 
     <div class="timeline-content">
-        <h3>Institute of Astronomy, University of Cambridge</h3>
+        <h3><div class="org-heading">
+    <img class="org-logo" src="./logos/cambridge.png" alt="University of Cambridge logo" onerror="this.style.display='none'">
+    <h3><a href="https://www.ast.cam.ac.uk/" target="_blank" rel="noopener noreferrer">Institute of Astronomy, University of Cambridge</a></h3>
+</div></h3>
         <h4>Research Intern — Joint Bayesian Inference Pipeline for Dark-Siren Gravitational-Wave Cosmology</h4>
-
+ 
         <p>
             Developed a joint Bayesian pipeline combining gravitational-wave strain and galaxy-catalog likelihoods for precision H₀ inference and scalable dark-siren analyses.
         </p>
-
+ 
         <p>
             Identified and resolved a scalability bottleneck in CHIMERA's batch-based likelihood, enabling its use in gradient-based inference and high-event-rate datasets, and derived a point-wise, differentiable reformulation of the likelihood for direct integration with BlackJAX — eliminating reliance on pre-computed GW posterior samples.
         </p>
-
+ 
         <p>
             Gained hands-on experience with HPC/GPU computing by implementing a chunked, GPU-scalable galaxy-catalog likelihood over 22.6 million real GLADE+ galaxies, reproducing the unbatched computation to full floating-point precision, and validated the pipeline on real, integrated LVK O1–O4b sensitivity data (~2.5 million injections), enabling application to real gravitational-wave events.
         </p>
-
+ 
         <p>
-            <span class="meta-pill">Advisors:</span> Dr. Will Handley &amp; David Yallup
+            <span class="meta-pill">Advisors:</span> <a href="https://www.kicc.cam.ac.uk/directory/wh260" target="_blank" rel="noopener noreferrer">Dr. Will Handley</a> &amp; <a href="https://www.kicc.cam.ac.uk/staff/david-yallup" target="_blank" rel="noopener noreferrer">David Yallup</a>
         </p>
     </div>
 </article>
-
+ 
                 <!-- IIT HYDERABAD -->
                 <article class="timeline-item">
     <div class="timeline-meta">
@@ -1066,25 +1084,41 @@
         <br>
         <span class="mono">On-site</span>
     </div>
-
+ 
     <div class="timeline-content">
-        <h3>Indian Institute of Technology, Hyderabad</h3>
+        <h3><div class="org-heading">
+    <img class="org-logo" src="./logos/iith.png" alt="IIT Hyderabad logo" onerror="this.style.display='none'">
+    <h3><a href="https://iith.ac.in/" target="_blank" rel="noopener noreferrer">Indian Institute of Technology, Hyderabad</a></h3>
+</div></h3>
         <h4>Research Intern — Dark Matter–Baryon Scattering Constraints from the Milky Way Circumgalactic Medium (CGM)</h4>
-
+ 
         <p>
             Derived upper limits on the dark matter–baryon scattering cross section using the thermal properties of the Milky Way's circumgalactic medium (CGM). Investigated four velocity-dependent interaction models (n = 2, 0, −2, −4) and compared the resulting CGM constraints with existing CMB limits.
         </p>
-
+ 
         <p>
             Demonstrated that CGM-based constraints are comparable to CMB limits for n = 2 and n = 0, establishing the CGM as a complementary probe of dark matter interactions. Developed the analysis and results into a research manuscript, currently in preparation.
         </p>
-
-        <p>
-            <span class="meta-pill">Advisor:</span> Dr. Divya Sachdeva
+ 
+        <p>.org-heading {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    margin-bottom: 0.2rem;
+}
+.org-logo {
+    width: 30px;
+    height: 30px;
+    object-fit: contain;
+    border-radius: 4px;
+    flex-shrink: 0;
+}
+.org-heading h3 { margin-bottom: 0; }
+            <span class="meta-pill">Advisor:</span> <a href="https://iith.ac.in/phy/divyasachdeva/" target="_blank" rel="noopener noreferrer">Dr. Divya Sachdeva</a>
         </p>
     </div>
 </article>
-
+ 
                 <!-- IIA -->
                 <article class="timeline-item">
     <div class="timeline-meta">
@@ -1092,29 +1126,32 @@
         <br>
         <span class="mono">Hybrid</span>
     </div>
-
+ 
     <div class="timeline-content">
-        <h3>Indian Institute of Astrophysics</h3>
-        <h4>Research Intern — Disentangling Stellar Populations in the Western Halo of the SMC Using UVIT and Gaia DR3</h4>
-
+        <h3><div class="org-heading">
+    <img class="org-logo" src="./logos/iia.png" alt="Indian Institute of Astrophysics logo" onerror="this.style.display='none'">
+    <h3><a href="https://www.iiap.res.in/" target="_blank" rel="noopener noreferrer">Indian Institute of Astrophysics</a></h3>
+</div></h3>
+        <h4>Research Intern (First Author) — Disentangling Stellar Populations in the Western Halo of the SMC Using UVIT and Gaia DR3</h4>
+ 
         <p>
             Investigated stellar populations in the western outskirts of the Small Magellanic Cloud as the first author and primary investigator, leading the full research workflow from data acquisition to analysis and interpretation. The study combined ultraviolet observations from UVIT/AstroSat FUV &amp; NUV  with optical photometry and astrometric data from Gaia to construct a multiwavelength view of the region.
         </p>
-
+ 
         <p>
             I developed and executed the complete data analysis pipeline, including cross-matching multi-catalog datasets, source cleaning and filtering, and construction of stellar population diagnostics such as color–magnitude diagrams and spatial distribution maps. Applied advanced analysis techniques such as vector point diagrams, Gaussian Mixture Models (GMM), and kernel density estimation (KDE) to study stellar kinematics and separate Milky Way foreground stars (including 47 Tucanae) from SMC members, followed by isochrone fitting on UV/optical color–magnitude and color–color diagrams.
         </p>
-
+ 
         <p>
             The analysis focused on identifying multiple stellar populations in this relatively underexplored outer region of the Small Magellanic Cloud and investigating possible tidal interactions. The results suggest population gradients and dynamical influence in the western outskirts, contributing to the understanding of the galaxy’s outer structure and evolutionary history.
         </p>
-
+ 
         <p>
-            <span class="meta-pill">Supervisors:</span> Prof. Annapurni Subramaniam &amp;  Dr. Sipra Hota
+            <span class="meta-pill">Supervisors:</span> <a href="https://www.iiap.res.in/people/director/" target="_blank" rel="noopener noreferrer">Prof. Annapurni Subramaniam</a> &amp; <a href="https://www.iiap.res.in/people/profile/student/sipra-hota/" target="_blank" rel="noopener noreferrer">Dr. Sipra Hota</a>
         </p>
     </div>
 </article>
-
+ 
                 <!-- BIT Mesra ME -->
                 <article class="timeline-item">
     <div class="timeline-meta">
@@ -1122,30 +1159,34 @@
         <br>
         <span class="mono">On-site</span>
     </div>
-
+ 
     <div class="timeline-content">
-        <h3>Birla Institute of Technology, Mesra</h3>
+        <h3><div class="org-heading">
+    <img class="org-logo" src="./logos/bitmesra.png" alt="BIT Mesra logo" onerror="this.style.display='none'">
+    <h3><a href="https://www.bitmesra.ac.in/" target="_blank" rel="noopener noreferrer">Birla Institute of Technology, Mesra</a></h3>
+</div></h3>
         <h4>Research Intern — Performance Analysis and Optimization of a Consumption-Scale Biogas Plant</h4>
-
+ 
         <p>
             Contributed to the establishment and operational optimization of a newly commissioned biogas plant, focusing on system setup, performance monitoring, and experimental data collection. The work involved designing and maintaining structured datasets to track plant efficiency, waste input composition, and energy output under varying operational conditions.
         </p>
-
+ 
         <p>
             Performed data-driven analysis to evaluate system performance and identify optimal waste-to-feedstock ratios, with the goal of improving overall biogas yield and mechanical efficiency. Insights from the analysis were used to support iterative adjustments in operational parameters.
         </p>
-
+ 
         <p>
             In addition to research responsibilities, provided technical assistance to Bachelor’s, Master’s, and Ph.D. students in data interpretation, and thesis-related analytical work. The project went on to win an INR 10,000 award at the BIT NISHAN Business Competition.
         </p>
-
+ 
         <p>
-            <span class="meta-pill">Supervisor:</span> Dr. Rajeev Kumar, Mechanical Engineering
+            <span class="meta-pill">Supervisor:</span> <a href="https://bitmesra.ac.in/Show_profile/474455354E427932535479684B6D654F4D2F42506C513D3D" target="_blank" rel="noopener noreferrer">Dr. Rajeev Kumar</a>, Mechanical Engineering
         </p>
     </div>
 </article>
             </div>
         </section>
+ 
 
         <!-- RESEARCH -->
         <section id="research" class="tab-pane">
