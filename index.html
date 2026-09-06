@@ -1053,41 +1053,70 @@
 
             <div class="timeline">
 
-                <!-- CAMBRIDGE -->
-                <article class="timeline-item">
-    <div class="timeline-meta">
-        <span class="mono">Jul 2026 —<br>Aug 2026</span>
-        <br>
-        <span class="mono">On-site</span>
+               <!-- CAMBRIDGE DARK-SIREN PROJECT -->
+<div class="abstract-block">
+    <div class="abstract-meta">
+        <span class="mono">July 2026 — August 2026</span>
     </div>
 
-    <div class="timeline-content">
-        <div class="org-heading">
-            <img class="org-logo" src="./logos/University_of_Cambridge-Logo.wine.svg" alt="University of Cambridge logo" onerror="this.style.display='none'">
-            <h3><a href="https://www.ast.cam.ac.uk/" target="_blank" rel="noopener noreferrer">Institute of Astronomy, University of Cambridge</a></h3>
-        </div>
-        <h4>Research Intern — Joint Bayesian Inference Pipeline for Dark-Siren Gravitational-Wave Cosmology</h4>
-<p>
-    Developed a joint Bayesian pipeline combining gravitational-wave strain and galaxy-catalog likelihoods for precision H₀ inference and scalable dark-siren analyses, working under Dr. Will Handley and David Yallup at the Institute of Astronomy, University of Cambridge.
-</p>
-<p>
-    Identified and resolved a scalability bottleneck in CHIMERA's batch-based likelihood, which relied on importance-weighting a pre-computed batch of ~5,000 posterior samples per event via kernel density estimation — an architecture fundamentally incompatible with gradient-based, point-wise samplers such as BlackJAX. Re-derived the underlying population, mass, rate, cosmology, and galaxy-catalog matching formulas as genuine point-wise, JAX-native functions, enabling a single joint likelihood — combining raw strain data, real galaxy-catalog information, and a selection-function correction — to be evaluated directly at one proposed parameter point at a time, with no reliance on pre-computed GW posterior samples.
-</p>
-<p>
-    Built and validated the full data pipeline against real astrophysical data throughout, rather than synthetic placeholders: real LIGO/Virgo strain data from the Gravitational Wave Open Science Center, the real GLADE+ galaxy catalog (22.6 million galaxies, all-sky), and a real LVK O1–O4b detector-sensitivity injection campaign (~2.5 million recorded injections drawn from a true underlying population of ~1.57 billion). Engineered a chunked, GPU-scalable implementation of the galaxy-catalog likelihood (via <code>jax.lax.scan</code>) to make evaluation against 22.6 million real galaxies tractable at scale on a single A100 GPU, and independently verified the chunked computation reproduces the unbatched result to full floating-point precision.
-</p>
-<p>
-    Conducted systematic diagnostic investigation to trace and resolve a severe, previously undetected systematic bias in the recovered H₀ posterior. Through a term-by-term decomposition of the joint log-likelihood as a function of H₀, isolated the cause to a completeness-normalization factor scaling by a full factor of 343× across the sampled H₀ range — matching the bare (140/20)³ comoving-volume scaling to five significant figures — and corrected the underlying normalization, restoring physically consistent H₀ recovery. Separately, replaced a selection-function normalization that had relied on an unverified, literature-sourced observing-time table with a first-principles correction computed directly from real per-injection GPS timestamps, independently validated to exactly reproduce the injection file's total stored count across all six LVK observing runs (O1 through O4b).
-</p>
-<p>
-    This debugging work surfaced a deeper, still-open problem at the intersection of galaxy-catalog depth and dark-siren inference: for gravitational-wave events whose distance range approaches the real detection limit of current all-sky galaxy catalogs, the transition between catalog-informed and background-only inference can introduce a residual, non-physical bias favoring higher H₀ — a limitation traced concretely to the real, measured depth limit of the GLADE+ catalog rather than to any remaining code defect. Identifying and rigorously characterizing this boundary effect — including testing an alternative, catalog-independent statistical completeness method drawn from the current literature — is framed as the critical next step for extending precision dark-siren cosmology to the fainter, more distant events that next-generation detectors will observe in far greater numbers.
-</p>
-        <p>
-            <span class="meta-pill">Advisors:</span> <a href="https://www.kicc.cam.ac.uk/directory/wh260" target="_blank" rel="noopener noreferrer">Prof. Will Handley</a> &amp; <a href="https://www.kicc.cam.ac.uk/staff/david-yallup" target="_blank" rel="noopener noreferrer">Dr. David Yallup</a>
-        </p>
-    </div>
-</article>
+    <h3>Joint Bayesian Inference for Dark-Siren Gravitational-Wave Cosmology</h3>
 
+    <div class="abstract-meta">
+        <span class="mono">
+            <strong>
+                <span class="org-heading">
+                    <img class="org-logo" src="./logos/University_of_Cambridge-Logo.wine.svg" alt="University of Cambridge logo" onerror="this.style.display='none'">
+                    Research Intern · Institute of Astronomy, University of Cambridge
+                </span>
+            </strong>
+        </span>
+    </div>
+
+    <p>
+        <span class="meta-pill">Supervised by:</span>
+        <a href="https://www.kicc.cam.ac.uk/directory/wh260" target="_blank" rel="noopener noreferrer">Dr. Will Handley</a>
+        and
+        <a href="https://www.kicc.cam.ac.uk/staff/david-yallup" target="_blank" rel="noopener noreferrer">David Yallup</a>
+    </p>
+
+    <p>
+        I worked on a Bayesian inference pipeline for measuring the Hubble constant, H₀, using gravitational-wave events without identified host galaxies.
+    </p>
+
+    <p>
+        <span class="meta-pill">CHIMERA → Problem</span><br>
+        The starting point was CHIMERA, whose likelihood relied on pre-computed gravitational-wave posterior samples. This was not compatible with the point-wise, gradient-based inference I wanted to perform with BlackJAX.
+    </p>
+
+    <p>
+        <span class="meta-pill">Reformulation → Point-wise likelihood</span><br>
+        I re-derived the population, cosmology, rate, mass, and galaxy-catalog terms as JAX-native point-wise functions, turning the existing formulation into a likelihood that could be evaluated directly at each proposed parameter point.
+    </p>
+
+    <p>
+        <span class="meta-pill">Real data → Scalable computation</span><br>
+        I then connected the pipeline to real LIGO/Virgo strain data, the GLADE+ galaxy catalog, and the LVK O1–O4b injection campaign. Since evaluating the galaxy likelihood across the full catalog was computationally prohibitive, I implemented a chunked GPU calculation to make the inference tractable.
+    </p>
+
+    <p>
+        <span class="meta-pill">Inference → Unexpected bias</span><br>
+        The first full analysis revealed a systematic bias toward higher H₀. Rather than treating this as a sampler failure, I traced the behavior through the individual components of the likelihood and identified the source of the bias.
+    </p>
+
+    <p>
+        <span class="meta-pill">Debugging → Deeper limitation</span><br>
+        After correcting the pipeline-level issue, a residual effect remained when the distance range of a gravitational-wave event approached the effective depth of the GLADE+ galaxy catalog. This showed that the problem was no longer simply computational: the transition from catalog-informed inference to background-only inference can itself introduce a bias in H₀.
+    </p>
+
+    <p>
+        <span class="meta-pill">Result → Research question</span><br>
+        The project therefore evolved from building a scalable inference pipeline into investigating a more fundamental question: how does the finite depth of real galaxy catalogs limit dark-siren cosmology?
+    </p>
+</div>
+
+<!-- DIVIDER -->
+<div class="publication-divider" style="margin: 2.5rem 0;"></div>
+                
                 <!-- IIT HYDERABAD -->
                 <article class="timeline-item">
     <div class="timeline-meta">
