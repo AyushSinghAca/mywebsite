@@ -530,6 +530,26 @@
             margin-bottom: 0.25rem;
         }
 
+        .work-details {
+            margin: 0.5rem 0 1.4rem;
+        }
+        .work-details summary {
+            cursor: pointer;
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--accent);
+            list-style: none;
+            margin-bottom: 1.2rem;
+            user-select: none;
+        }
+        .work-details summary::-webkit-details-marker { display: none; }
+        .work-details summary::before { content: '+ '; }
+        .work-details[open] summary::before { content: '– '; }
+        .work-details summary:hover { color: var(--accent-dk); }
+        .work-details p:last-child { margin-bottom: 1.4rem; }
+
         .abstract-block {
             background: transparent;
             padding: 2.8rem;
@@ -984,7 +1004,7 @@
                         <img class="org-strip-logo" src="./logos/University_of_Cambridge-Logo.wine.svg" alt="University of Cambridge">
                         <span>Cambridge</span>
                     </a>
-                    
+
                 </div>
             </div>
         </section>
@@ -1053,72 +1073,67 @@
 
             <div class="timeline">
 
-               <!-- CAMBRIDGE DARK-SIREN PROJECT -->
-<div class="abstract-block">
-    <div class="abstract-meta">
-        <span class="mono">July 2026 — August 2026</span>
+                <!-- CAMBRIDGE -->
+                <article class="timeline-item">
+    <div class="timeline-meta">
+        <span class="mono">Jul 2026 —<br>Aug 2026</span>
+        <br>
+        <span class="mono">On-site</span>
     </div>
 
-    <h3>Joint Bayesian Inference for Dark-Siren Gravitational-Wave Cosmology</h3>
+    <div class="timeline-content">
+        <div class="org-heading">
+            <img class="org-logo" src="./logos/University_of_Cambridge-Logo.wine.svg" alt="University of Cambridge logo" onerror="this.style.display='none'">
+            <h3><a href="https://www.ast.cam.ac.uk/" target="_blank" rel="noopener noreferrer">Institute of Astronomy, University of Cambridge</a></h3>
+        </div>
+        <h4>Research Intern — Joint Bayesian Inference for Dark-Siren Gravitational-Wave Cosmology</h4>
 
-    <div class="abstract-meta">
-        <span class="mono">
-            <strong>
-                <span class="org-heading">
-                    <img class="org-logo" src="./logos/University_of_Cambridge-Logo.wine.svg" alt="University of Cambridge logo" onerror="this.style.display='none'">
-                    Research Intern · Institute of Astronomy, University of Cambridge
-                </span>
-            </strong>
-        </span>
+        <p>
+            I worked on a Bayesian inference pipeline for measuring the Hubble constant, H₀, using gravitational-wave events without identified host galaxies.
+        </p>
+
+        <details class="work-details">
+            <summary>Read more about this work</summary>
+
+            <p>
+                <span class="meta-pill">CHIMERA → Problem</span><br>
+                The starting point was CHIMERA, whose likelihood relied on pre-computed gravitational-wave posterior samples. This was not compatible with the point-wise, gradient-based inference I wanted to perform with BlackJAX.
+            </p>
+
+            <p>
+                <span class="meta-pill">Reformulation → Point-wise likelihood</span><br>
+                I re-derived the population, cosmology, rate, mass, and galaxy-catalog terms as JAX-native point-wise functions, turning the existing formulation into a likelihood that could be evaluated directly at each proposed parameter point.
+            </p>
+
+            <p>
+                <span class="meta-pill">Real data → Scalable computation</span><br>
+                I then connected the pipeline to real LIGO/Virgo strain data, the GLADE+ galaxy catalog, and the LVK O1–O4b injection campaign. Since evaluating the galaxy likelihood across the full catalog was computationally prohibitive, I implemented a chunked GPU calculation to make the inference tractable.
+            </p>
+
+            <p>
+                <span class="meta-pill">Inference → Unexpected bias</span><br>
+                The first full analysis revealed a systematic bias toward higher H₀. Rather than treating this as a sampler failure, I traced the behavior through the individual components of the likelihood and identified the source of the bias.
+            </p>
+
+            <p>
+                <span class="meta-pill">Debugging → Deeper limitation</span><br>
+                After correcting the pipeline-level issue, a residual effect remained when the distance range of a gravitational-wave event approached the effective depth of the GLADE+ galaxy catalog. This showed that the problem was no longer simply computational: the transition from catalog-informed inference to background-only inference can itself introduce a bias in H₀.
+            </p>
+
+            <p>
+                <span class="meta-pill">Result → Research question</span><br>
+                The project therefore evolved from building a scalable inference pipeline into investigating a more fundamental question: how does the finite depth of real galaxy catalogs limit dark-siren cosmology?
+            </p>
+        </details>
+
+        <p>
+            <span class="meta-pill">Advisors:</span> <a href="https://www.kicc.cam.ac.uk/directory/wh260" target="_blank" rel="noopener noreferrer">Dr. Will Handley</a> &amp; <a href="https://www.kicc.cam.ac.uk/staff/david-yallup" target="_blank" rel="noopener noreferrer">David Yallup</a>
+        </p>
     </div>
+</article>
 
-    <p>
-        <span class="meta-pill">Supervised by:</span>
-        <a href="https://www.kicc.cam.ac.uk/directory/wh260" target="_blank" rel="noopener noreferrer">Dr. Will Handley</a>
-        and
-        <a href="https://www.kicc.cam.ac.uk/staff/david-yallup" target="_blank" rel="noopener noreferrer">David Yallup</a>
-    </p>
-
-    <p>
-        I worked on a Bayesian inference pipeline for measuring the Hubble constant, H₀, using gravitational-wave events without identified host galaxies.
-    </p>
-
-    <p>
-        <span class="meta-pill">CHIMERA → Problem</span><br>
-        The starting point was CHIMERA, whose likelihood relied on pre-computed gravitational-wave posterior samples. This was not compatible with the point-wise, gradient-based inference I wanted to perform with BlackJAX.
-    </p>
-
-    <p>
-        <span class="meta-pill">Reformulation → Point-wise likelihood</span><br>
-        I re-derived the population, cosmology, rate, mass, and galaxy-catalog terms as JAX-native point-wise functions, turning the existing formulation into a likelihood that could be evaluated directly at each proposed parameter point.
-    </p>
-
-    <p>
-        <span class="meta-pill">Real data → Scalable computation</span><br>
-        I then connected the pipeline to real LIGO/Virgo strain data, the GLADE+ galaxy catalog, and the LVK O1–O4b injection campaign. Since evaluating the galaxy likelihood across the full catalog was computationally prohibitive, I implemented a chunked GPU calculation to make the inference tractable.
-    </p>
-
-    <p>
-        <span class="meta-pill">Inference → Unexpected bias</span><br>
-        The first full analysis revealed a systematic bias toward higher H₀. Rather than treating this as a sampler failure, I traced the behavior through the individual components of the likelihood and identified the source of the bias.
-    </p>
-
-    <p>
-        <span class="meta-pill">Debugging → Deeper limitation</span><br>
-        After correcting the pipeline-level issue, a residual effect remained when the distance range of a gravitational-wave event approached the effective depth of the GLADE+ galaxy catalog. This showed that the problem was no longer simply computational: the transition from catalog-informed inference to background-only inference can itself introduce a bias in H₀.
-    </p>
-
-    <p>
-        <span class="meta-pill">Result → Research question</span><br>
-        The project therefore evolved from building a scalable inference pipeline into investigating a more fundamental question: how does the finite depth of real galaxy catalogs limit dark-siren cosmology?
-    </p>
-</div>
-
-<!-- DIVIDER -->
-<div class="publication-divider" style="margin: 2.5rem 0;"></div>
-                
-               <!-- IIT HYDERABAD -->
-<article class="timeline-item">
+                <!-- IIT HYDERABAD -->
+                <article class="timeline-item">
     <div class="timeline-meta">
         <span class="mono">May 2026 —<br>Jul 2026</span>
         <br>
@@ -1127,64 +1142,39 @@
 
     <div class="timeline-content">
         <div class="org-heading">
-            <img class="org-logo" src="./logos/iith.png"
-                 alt="IIT Hyderabad logo"
-                 onerror="this.style.display='none'">
-            <h3>
-                <a href="https://iith.ac.in/" target="_blank" rel="noopener noreferrer">
-                    Indian Institute of Technology, Hyderabad
-                </a>
-            </h3>
+            <img class="org-logo" src="./logos/iith.png" alt="IIT Hyderabad logo" onerror="this.style.display='none'">
+            <h3><a href="https://iith.ac.in/" target="_blank" rel="noopener noreferrer">Indian Institute of Technology, Hyderabad</a></h3>
         </div>
-
-        <h4>
-            Research Intern — Dark Matter–Baryon Scattering Constraints
-            from the Milky Way Circumgalactic Medium (CGM)
-        </h4>
+        <h4>Research Intern — Dark Matter–Baryon Scattering Constraints from the Milky Way Circumgalactic Medium (CGM)</h4>
 
         <p>
-            Investigated whether the hot circumgalactic medium (CGM) of the
-            Milky Way can be used as an independent probe of dark matter–baryon
-            interactions. The project focused on constraining the scattering
-            cross section from the thermal properties of the hot halo gas.
+            Investigated whether the hot circumgalactic medium (CGM) of the Milky Way can be used as an independent probe of dark matter–baryon interactions. The project focused on constraining the scattering cross section from the thermal properties of the hot halo gas.
         </p>
 
-        <p>
-            <strong>Approach:</strong> Developed a thermal-heating based analysis
-            and derived upper limits on the dark matter–baryon scattering cross
-            section for four velocity-dependent interaction models,
-            <em>n = 2, 0, −2, −4</em>. The resulting constraints were compared
-            with existing limits from cosmic microwave background (CMB)
-            observations.
-        </p>
+        <details class="work-details">
+            <summary>Read more about this work</summary>
 
-        <p>
-            <strong>Results:</strong> Found that the CGM constraints are
-            comparable to CMB limits for <em>n = 2</em> and <em>n = 0</em>,
-            while the CMB provides stronger constraints for the more
-            velocity-dependent cases, <em>n = −2</em> and <em>n = −4</em>.
-            This demonstrates the potential of the Milky Way CGM as a
-            complementary thermodynamic probe of dark matter interactions.
-        </p>
+            <p>
+                <strong>Approach:</strong> Developed a thermal-heating based analysis and derived upper limits on the dark matter–baryon scattering cross section for four velocity-dependent interaction models, <em>n = 2, 0, −2, −4</em>. The resulting constraints were compared with existing limits from cosmic microwave background (CMB) observations.
+            </p>
 
-        <p>
-            <strong>Outcome:</strong> The analysis forms a first exploratory
-            study of CGM-based dark matter constraints and has been developed
-            into a research manuscript currently in preparation.
-        </p>
+            <p>
+                <strong>Results:</strong> Found that the CGM constraints are comparable to CMB limits for <em>n = 2</em> and <em>n = 0</em>, while the CMB provides stronger constraints for the more velocity-dependent cases, <em>n = −2</em> and <em>n = −4</em>. This demonstrates the potential of the Milky Way CGM as a complementary thermodynamic probe of dark matter interactions.
+            </p>
 
-        <p>
-            <span class="meta-pill">Methods:</span>
-            Dark matter phenomenology · CGM heating · Scattering constraints ·
-            Velocity-dependent interactions · CMB comparison
-        </p>
+            <p>
+                <strong>Outcome:</strong> The analysis forms a first exploratory study of CGM-based dark matter constraints and has been developed into a research manuscript currently in preparation.
+            </p>
+
+            <p>
+                <span class="meta-pill">Methods:</span>
+                Dark matter phenomenology · CGM heating · Scattering constraints · Velocity-dependent interactions · CMB comparison
+            </p>
+        </details>
 
         <p>
             <span class="meta-pill">Advisor:</span>
-            <a href="https://iith.ac.in/phy/divyasachdeva/"
-               target="_blank" rel="noopener noreferrer">
-                Prof. Divya Sachdeva
-            </a>
+            <a href="https://iith.ac.in/phy/divyasachdeva/" target="_blank" rel="noopener noreferrer">Prof. Divya Sachdeva</a>
         </p>
     </div>
 </article>
