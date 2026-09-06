@@ -1067,19 +1067,21 @@
             <h3><a href="https://www.ast.cam.ac.uk/" target="_blank" rel="noopener noreferrer">Institute of Astronomy, University of Cambridge</a></h3>
         </div>
         <h4>Research Intern — Joint Bayesian Inference Pipeline for Dark-Siren Gravitational-Wave Cosmology</h4>
-
-        <p>
-            Developed a joint Bayesian pipeline combining gravitational-wave strain and galaxy-catalog likelihoods for precision H₀ inference and scalable dark-siren analyses.
-        </p>
-
-        <p>
-            Identified and resolved a scalability bottleneck in CHIMERA's batch-based likelihood, enabling its use in gradient-based inference and high-event-rate datasets, and derived a point-wise, differentiable reformulation of the likelihood for direct integration with BlackJAX — eliminating reliance on pre-computed GW posterior samples.
-        </p>
-
-        <p>
-            Gained hands-on experience with HPC/GPU computing by implementing a chunked, GPU-scalable galaxy-catalog likelihood over 22.6 million real GLADE+ galaxies, reproducing the unbatched computation to full floating-point precision, and validated the pipeline on real, integrated LVK O1–O4b sensitivity data (~2.5 million injections), enabling application to real gravitational-wave events.
-        </p>
-
+<p>
+    Developed a joint Bayesian pipeline combining gravitational-wave strain and galaxy-catalog likelihoods for precision H₀ inference and scalable dark-siren analyses, working under Dr. Will Handley and David Yallup at the Institute of Astronomy, University of Cambridge.
+</p>
+<p>
+    Identified and resolved a scalability bottleneck in CHIMERA's batch-based likelihood, which relied on importance-weighting a pre-computed batch of ~5,000 posterior samples per event via kernel density estimation — an architecture fundamentally incompatible with gradient-based, point-wise samplers such as BlackJAX. Re-derived the underlying population, mass, rate, cosmology, and galaxy-catalog matching formulas as genuine point-wise, JAX-native functions, enabling a single joint likelihood — combining raw strain data, real galaxy-catalog information, and a selection-function correction — to be evaluated directly at one proposed parameter point at a time, with no reliance on pre-computed GW posterior samples.
+</p>
+<p>
+    Built and validated the full data pipeline against real astrophysical data throughout, rather than synthetic placeholders: real LIGO/Virgo strain data from the Gravitational Wave Open Science Center, the real GLADE+ galaxy catalog (22.6 million galaxies, all-sky), and a real LVK O1–O4b detector-sensitivity injection campaign (~2.5 million recorded injections drawn from a true underlying population of ~1.57 billion). Engineered a chunked, GPU-scalable implementation of the galaxy-catalog likelihood (via <code>jax.lax.scan</code>) to make evaluation against 22.6 million real galaxies tractable at scale on a single A100 GPU, and independently verified the chunked computation reproduces the unbatched result to full floating-point precision.
+</p>
+<p>
+    Conducted systematic diagnostic investigation to trace and resolve a severe, previously undetected systematic bias in the recovered H₀ posterior. Through a term-by-term decomposition of the joint log-likelihood as a function of H₀, isolated the cause to a completeness-normalization factor scaling by a full factor of 343× across the sampled H₀ range — matching the bare (140/20)³ comoving-volume scaling to five significant figures — and corrected the underlying normalization, restoring physically consistent H₀ recovery. Separately, replaced a selection-function normalization that had relied on an unverified, literature-sourced observing-time table with a first-principles correction computed directly from real per-injection GPS timestamps, independently validated to exactly reproduce the injection file's total stored count across all six LVK observing runs (O1 through O4b).
+</p>
+<p>
+    This debugging work surfaced a deeper, still-open problem at the intersection of galaxy-catalog depth and dark-siren inference: for gravitational-wave events whose distance range approaches the real detection limit of current all-sky galaxy catalogs, the transition between catalog-informed and background-only inference can introduce a residual, non-physical bias favoring higher H₀ — a limitation traced concretely to the real, measured depth limit of the GLADE+ catalog rather than to any remaining code defect. Identifying and rigorously characterizing this boundary effect — including testing an alternative, catalog-independent statistical completeness method drawn from the current literature — is framed as the critical next step for extending precision dark-siren cosmology to the fainter, more distant events that next-generation detectors will observe in far greater numbers.
+</p>
         <p>
             <span class="meta-pill">Advisors:</span> <a href="https://www.kicc.cam.ac.uk/directory/wh260" target="_blank" rel="noopener noreferrer">Prof. Will Handley</a> &amp; <a href="https://www.kicc.cam.ac.uk/staff/david-yallup" target="_blank" rel="noopener noreferrer">Dr. David Yallup</a>
         </p>
