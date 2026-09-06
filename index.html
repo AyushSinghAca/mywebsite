@@ -349,24 +349,18 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 0.6rem;
-            width: 92px;
+            gap: 0.8rem;
+            width: 160px;
             text-align: center;
         }
         .org-strip-logo {
-            width: 64px;
-            height: 64px;
+            width: 140px;
+            height: 140px;
             object-fit: contain;
-            border-radius: 10px;
-            background: #FFFFFF;
-            padding: 10px;
-            border: 1px solid var(--faint);
-            box-shadow: 0 3px 10px rgba(24, 23, 26, 0.08);
-            transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease);
+            transition: transform 0.25s var(--ease);
         }
         .org-strip-item:hover .org-strip-logo {
             transform: translateY(-3px);
-            box-shadow: 0 6px 16px rgba(24, 23, 26, 0.12);
         }
         .org-strip-item span {
             font-family: var(--font-mono);
@@ -376,9 +370,9 @@
             line-height: 1.3;
         }
         @media (max-width: 768px) {
-            .org-strip-row { gap: 1rem; }
-            .org-strip-item { width: 76px; }
-            .org-strip-logo { width: 52px; height: 52px; }
+            .org-strip-row { gap: 1.5rem; }
+            .org-strip-item { width: 100px; }
+            .org-strip-logo { width: 88px; height: 88px; }
         }
 
         .stat-item {
