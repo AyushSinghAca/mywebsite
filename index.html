@@ -687,6 +687,38 @@
             line-height: 1.9;
         }
 
+        /* ─── HONORS / VOLUNTEER / WORKSHOPS ─────────────── */
+        .plain-list {
+            list-style: none;
+            margin-top: 0.5rem;
+        }
+
+        .plain-list li {
+            display: flex;
+            gap: 1rem;
+            padding: 1.4rem 0;
+            border-bottom: 1px solid var(--faint);
+        }
+        .plain-list li:first-child { border-top: 1px solid var(--faint); }
+
+        .plain-list .li-dot {
+            flex-shrink: 0;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--accent);
+            margin-top: 0.55rem;
+        }
+
+        .plain-list .li-body h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.2rem;
+        }
+
+        .plain-list .li-body .mono { margin-bottom: 0.5rem; display: block; }
+
+        .plain-list .li-body p { margin-bottom: 0; opacity: 0.92; }
+
         /* ─── CONTACT ─────────────────────────────────────── */
         .contact-list { list-style: none; margin-top: 2rem; }
 
@@ -715,6 +747,13 @@
         .contact-info .mono { margin-bottom: 0.3rem; }
 
         .contact-info a {
+            font-family: var(--font-serif);
+            font-style: italic;
+            font-size: 1.3rem;
+            display: block;
+        }
+
+        .contact-info span.plain {
             font-family: var(--font-serif);
             font-style: italic;
             font-size: 1.3rem;
@@ -851,9 +890,11 @@
                 <li class="nav-item"><button class="nav-btn" data-num="03." data-target="experience">Research Experience</button></li>
                 <li class="nav-item"><button class="nav-btn" data-num="04." data-target="research">Projects</button></li>
                 <li class="nav-item"><button class="nav-btn" data-num="05." data-target="publications">Publications</button></li>
-                <li class="nav-item"><button class="nav-btn" data-num="06." data-target="coursework">Coursework</button></li>
-                <li class="nav-item"><button class="nav-btn" data-num="07." data-target="skills">Skills</button></li>
-                <li class="nav-item"><button class="nav-btn" data-num="08." data-target="contact">Contact</button></li>
+                <li class="nav-item"><button class="nav-btn" data-num="06." data-target="workshops">Workshops</button></li>
+                <li class="nav-item"><button class="nav-btn" data-num="07." data-target="coursework">Coursework</button></li>
+                <li class="nav-item"><button class="nav-btn" data-num="08." data-target="skills">Skills</button></li>
+                <li class="nav-item"><button class="nav-btn" data-num="09." data-target="honors">Honors &amp; Volunteering</button></li>
+                <li class="nav-item"><button class="nav-btn" data-num="10." data-target="contact">Contact</button></li>
             </ul>
         </nav>
 
@@ -891,8 +932,12 @@
                     <span class="val">Senior Undergraduate</span>
                 </div>
                 <div class="stat-item">
-                    <span class="mono">Academic Performance</span>
-                    <span class="val">CGPA: 8.92 / 10.0</span>
+                    <span class="mono">Major CGPA</span>
+                    <span class="val">9.50 / 10.0</span>
+                </div>
+                <div class="stat-item">
+                    <span class="mono">Overall CGPA</span>
+                    <span class="val">8.83 / 10.0</span>
                 </div>
             </div>
         </section>
@@ -937,7 +982,7 @@
             </p>
 
             <p>
-                Later, I worked with real observational datasets from UVIT/AstroSat and Gaia, gaining experience in multiwavelength astronomy, catalog cross-matching, stellar population analysis, and astrophysical data interpretation. Currently, I am exploring computational and statistical approaches relevant to modern astrophysics and cosmology.
+                Later, I worked with real observational datasets from UVIT/AstroSat and Gaia, gaining experience in multiwavelength astronomy, catalog cross-matching, stellar population analysis, and astrophysical data interpretation. I then extended this into dark matter physics, deriving constraints on dark matter–baryon scattering from the thermal properties of the Milky Way's circumgalactic medium, and most recently into gravitational-wave cosmology, building a joint Bayesian inference pipeline for dark-siren $H_0$ measurements. Currently, I am exploring computational and statistical approaches relevant to modern astrophysics and cosmology.
             </p>
         </div>
 
@@ -984,24 +1029,80 @@
 
             <div class="timeline">
 
+                <!-- CAMBRIDGE -->
+                <article class="timeline-item">
+    <div class="timeline-meta">
+        <span class="mono">Jul 2026 —<br>Aug 2026</span>
+        <br>
+        <span class="mono">On-site</span>
+    </div>
+
+    <div class="timeline-content">
+        <h3>Institute of Astronomy, University of Cambridge</h3>
+        <h4>Research Intern — Joint Bayesian Inference Pipeline for Dark-Siren Gravitational-Wave Cosmology</h4>
+
+        <p>
+            Developed a joint Bayesian pipeline combining gravitational-wave strain and galaxy-catalog likelihoods for precision H₀ inference and scalable dark-siren analyses.
+        </p>
+
+        <p>
+            Identified and resolved a scalability bottleneck in CHIMERA's batch-based likelihood, enabling its use in gradient-based inference and high-event-rate datasets, and derived a point-wise, differentiable reformulation of the likelihood for direct integration with BlackJAX — eliminating reliance on pre-computed GW posterior samples.
+        </p>
+
+        <p>
+            Gained hands-on experience with HPC/GPU computing by implementing a chunked, GPU-scalable galaxy-catalog likelihood over 22.6 million real GLADE+ galaxies, reproducing the unbatched computation to full floating-point precision, and validated the pipeline on real, integrated LVK O1–O4b sensitivity data (~2.5 million injections), enabling application to real gravitational-wave events.
+        </p>
+
+        <p>
+            <span class="meta-pill">Advisors:</span> Dr. Will Handley &amp; David Yallup
+        </p>
+    </div>
+</article>
+
+                <!-- IIT HYDERABAD -->
+                <article class="timeline-item">
+    <div class="timeline-meta">
+        <span class="mono">May 2026 —<br>Jul 2026</span>
+        <br>
+        <span class="mono">On-site</span>
+    </div>
+
+    <div class="timeline-content">
+        <h3>Indian Institute of Technology, Hyderabad</h3>
+        <h4>Research Intern — Dark Matter–Baryon Scattering Constraints from the Milky Way CGM</h4>
+
+        <p>
+            Derived upper limits on the dark matter–baryon scattering cross section using the thermal properties of the Milky Way's circumgalactic medium (CGM). Investigated four velocity-dependent interaction models (n = 2, 0, −2, −4) and compared the resulting CGM constraints with existing CMB limits.
+        </p>
+
+        <p>
+            Demonstrated that CGM-based constraints are comparable to CMB limits for n = 2 and n = 0, establishing the CGM as a complementary probe of dark matter interactions. Developed the analysis and results into a research manuscript, currently in preparation.
+        </p>
+
+        <p>
+            <span class="meta-pill">Advisor:</span> Dr. Divya Sachdeva
+        </p>
+    </div>
+</article>
+
                 <!-- IIA -->
                 <article class="timeline-item">
     <div class="timeline-meta">
-        <span class="mono">May 2025 —<br>Feb 2026</span>
+        <span class="mono">May 2025 —<br>Mar 2026</span>
         <br>
         <span class="mono">Hybrid</span>
     </div>
 
     <div class="timeline-content">
         <h3>Indian Institute of Astrophysics</h3>
-        <h4>Research Intern (First Author)</h4>
+        <h4>Research Intern (First Author) — Disentangling Stellar Populations in the Western Halo of the SMC Using UVIT and Gaia DR3</h4>
 
         <p>
             Investigated stellar populations in the western outskirts of the Small Magellanic Cloud as the first author and primary investigator, leading the full research workflow from data acquisition to analysis and interpretation. The study combined ultraviolet observations from UVIT/AstroSat FUV &amp; NUV  with optical photometry and astrometric data from Gaia to construct a multiwavelength view of the region.
         </p>
 
         <p>
-            I developed and executed the complete data analysis pipeline, including cross-matching multi-catalog datasets, source cleaning and filtering, and construction of stellar population diagnostics such as color–magnitude diagrams and spatial distribution maps.
+            I developed and executed the complete data analysis pipeline, including cross-matching multi-catalog datasets, source cleaning and filtering, and construction of stellar population diagnostics such as color–magnitude diagrams and spatial distribution maps. Applied advanced analysis techniques such as vector point diagrams, Gaussian Mixture Models (GMM), and kernel density estimation (KDE) to study stellar kinematics and separate Milky Way foreground stars (including 47 Tucanae) from SMC members, followed by isochrone fitting on UV/optical color–magnitude and color–color diagrams.
         </p>
 
         <p>
@@ -1019,11 +1120,12 @@
     <div class="timeline-meta">
         <span class="mono">May 2024 —<br>Apr 2025</span>
         <br>
+        <span class="mono">On-site</span>
     </div>
 
     <div class="timeline-content">
         <h3>Birla Institute of Technology, Mesra</h3>
-        <h4>Research Intern</h4>
+        <h4>Research Intern — Performance Analysis and Optimization of a Consumption-Scale Biogas Plant</h4>
 
         <p>
             Contributed to the establishment and operational optimization of a newly commissioned biogas plant, focusing on system setup, performance monitoring, and experimental data collection. The work involved designing and maintaining structured datasets to track plant efficiency, waste input composition, and energy output under varying operational conditions.
@@ -1034,7 +1136,7 @@
         </p>
 
         <p>
-            In addition to research responsibilities, provided technical assistance to Bachelor’s, Master’s, and Ph.D. students in data interpretation, and thesis-related analytical work .
+            In addition to research responsibilities, provided technical assistance to Bachelor’s, Master’s, and Ph.D. students in data interpretation, and thesis-related analytical work. The project went on to win an INR 10,000 award at the BIT NISHAN Business Competition.
         </p>
 
         <p>
@@ -1134,7 +1236,7 @@
 
             <div class="publication-grid">
 
-                <!-- JOURNAL -->
+                <!-- JOURNAL 1 -->
                 <div class="publication-card">
                     <span class="publication-tag">Journal Publication</span>
 
@@ -1145,7 +1247,7 @@
                     </p>
 
                     <p>
-                        <strong>Status:</strong> Manuscript in Preparation · 3rd Author
+                        <strong>Status:</strong> Manuscript in Preparation · 3rd Author (reviewing draft)
                     </p>
 
                     <p>
@@ -1154,6 +1256,25 @@
 
                     <p>
                         <strong>Authors:</strong> Ayush Singh · Sipra Hota · Prasanta Kumar Nayak · Annapurni Subramaniam
+                    </p>
+                </div>
+
+                <!-- JOURNAL 2 -->
+                <div class="publication-card">
+                    <span class="publication-tag">Manuscript in Preparation</span>
+
+                    <h3>Dark Matter–Baryon Interactions in the Hot Halo Gas of the Milky Way</h3>
+
+                    <p>
+                        <strong>Status:</strong> In progress
+                    </p>
+
+                    <p>
+                        <strong>Focus:</strong> Upper limits on the dark matter–baryon scattering cross section derived from the thermal properties of the Milky Way's circumgalactic medium, across four velocity-dependent interaction models.
+                    </p>
+
+                    <p>
+                        <strong>Authors:</strong> Divya Sachdeva · Ayush Singh
                     </p>
                 </div>
 
@@ -1192,6 +1313,30 @@
             </div>
         </section>
 
+        <!-- WORKSHOPS -->
+        <section id="workshops" class="tab-pane">
+            <div class="section-header">
+                <h2>Workshops &amp; Summer Courses</h2>
+            </div>
+
+            <div class="abstract-block">
+                <div class="abstract-meta">
+                    <span class="mono">June 2025 · 10 days</span>
+                    <span class="mono">Kodaikanal, India · On-site</span>
+                </div>
+
+                <h3>KSO Summer School, Indian Institute of Astrophysics</h3>
+
+                <p>
+                    Participated in hands-on sessions on astronomy, including data cleaning and basic analysis techniques.
+                </p>
+
+                <p>
+                    Attended lectures spanning multiple branches of astronomy, including general relativity, planetary science, solar studies, stellar evolution, and active galactic nuclei.
+                </p>
+            </div>
+        </section>
+
         <!-- COURSEWORK -->
         <section id="coursework" class="tab-pane">
             <div class="section-header">
@@ -1205,14 +1350,15 @@
                     <h3>Core Physics</h3>
 
                     <p>
-                        Quantum Mechanics<br>
+                        General Relativity<br>
+                        Quantum Mechanics (I, II, III)<br>
                         Classical Mechanics<br>
                         Mathematical Physics<br>
                         Experimental Physics<br>
                         Waves &amp; Optics<br>
                         Electricity &amp; Magnetism<br>
                         Thermal Physics<br>
-                        Statistical Mechanics<br>
+                        Statistical Mechanics / Physics<br>
                         Solid State Physics<br>
                         Analog Electronics<br>
                         Digital Systems &amp; Applications<br>
@@ -1271,7 +1417,17 @@
                     <p>
                         NumPy · SciPy · Pandas<br>
                         AstroPy · Astroquery<br>
+                        JAX · GPU/CPU-accelerated computing<br>
                         Numerical Techniques
+                    </p>
+                </div>
+
+                <div class="data-group">
+                    <h3>Bayesian Inference</h3>
+                    <p>
+                        Hierarchical Bayesian Modeling<br>
+                        BlackJAX · MCMC · Nested Sampling<br>
+                        Differentiable Probabilistic Inference
                     </p>
                 </div>
 
@@ -1310,7 +1466,74 @@
                     </p>
                 </div>
 
+                <div class="data-group">
+                    <h3>Languages</h3>
+                    <p>
+                        Hindi (Native) · Maithili (Native)<br>
+                        English (C1) · German (Beginner)
+                    </p>
+                </div>
+
             </div>
+        </section>
+
+        <!-- HONORS & VOLUNTEERING -->
+        <section id="honors" class="tab-pane">
+            <div class="section-header">
+                <h2>Honors, Awards &amp; Volunteering</h2>
+            </div>
+
+            <h3 style="margin-bottom: 0.5rem;">Honors &amp; Awards</h3>
+            <ul class="plain-list">
+                <li>
+                    <span class="li-dot"></span>
+                    <div class="li-body">
+                        <h3>Branch Topper Award</h3>
+                        <span class="mono">Birla Institute of Technology, Mesra · Coordinator: Dr. Rajeev Kumar</span>
+                        <p>Received a cash prize of INR 15,000 for securing the highest academic rank in the Physics branch during the 2nd–6th semesters, recognizing consistent academic excellence and top departmental performance.</p>
+                    </div>
+                </li>
+                <li>
+                    <span class="li-dot"></span>
+                    <div class="li-body">
+                        <h3>BIT NISHAN Business Competition Award</h3>
+                        <span class="mono">Birla Institute of Technology, Mesra</span>
+                        <p>Won an INR 10,000 award for a biogas-plant project developed as part of research work under Dr. Rajeev Kumar, Department of Mechanical Engineering.</p>
+                    </div>
+                </li>
+            </ul>
+
+            <div class="rule" style="margin: 3rem 0 2.5rem;"><span>Volunteer Experience</span></div>
+
+            <ul class="plain-list">
+                <li>
+                    <span class="li-dot"></span>
+                    <div class="li-body">
+                        <h3>Volunteer for Rural Development, Unnat Bharat Abhiyan (UBA)</h3>
+                        <span class="mono">August 2024 — December 2025 · Coordinator: Dr. Rajeev Kumar</span>
+                        <p>Contributed to rural development initiatives under UBA, supporting projects focused on infrastructure, sanitation, and education in rural communities. Developed leadership, problem-solving, teamwork, and community engagement skills through active participation in field-based development activities.</p>
+                    </div>
+                </li>
+                <li>
+                    <span class="li-dot"></span>
+                    <div class="li-body">
+                        <h3>Freshers' Welcome, Department of Physics</h3>
+                        <span class="mono">Organizing Committee · Batches of 2024 &amp; 2025</span>
+                        <p>Led event planning and coordination, managing logistics, student participation, and on-ground arrangements in collaboration with faculty and volunteers.</p>
+                    </div>
+                </li>
+                <li>
+                    <span class="li-dot"></span>
+                    <div class="li-body">
+                        <h3>Farewell Event, Department of Physics</h3>
+                        <span class="mono">Organizing Committee · 2024 &amp; 2025</span>
+                        <p>Led planning and coordination of farewell events, managing logistics, activities, and student participation.</p>
+                    </div>
+                </li>
+            </ul>
+
+            <div class="rule" style="margin: 3rem 0 2.5rem;"><span>Interests</span></div>
+            <p style="opacity: 0.85;">Wildlife · Philosophy · Politics · Debate</p>
         </section>
 
         <!-- CONTACT -->
@@ -1320,6 +1543,22 @@
             </div>
 
             <ul class="contact-list">
+
+                <!-- PHONE -->
+                <li>
+                    <div class="contact-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.5" stroke-linecap="round"
+                            stroke-linejoin="round">
+                            <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.362 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0122 16.92z"/>
+                        </svg>
+                    </div>
+
+                    <div class="contact-info">
+                        <span class="mono">Phone</span>
+                        <a href="tel:+919102499887">+91 91024 99887</a>
+                    </div>
+                </li>
 
                 <!-- EMAIL -->
                 <li>
@@ -1367,9 +1606,31 @@
                             display: block;
                             margin-top: 0.2rem;
                         ">
-                            Hostel-13 · Birla Institute of Technology, Mesra<br>
-                            Ranchi, Jharkhand · India
+                            Hostel-10 · Birla Institute of Technology, Mesra<br>
+                            Ranchi, Jharkhand · India — 835215
                         </span>
+                    </div>
+                </li>
+
+                <!-- WEBSITE -->
+                <li>
+                    <div class="contact-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.5" stroke-linecap="round"
+                            stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/>
+                        </svg>
+                    </div>
+
+                    <div class="contact-info">
+                        <span class="mono">Website</span>
+
+                        <a href="https://ayushsinghaca.github.io/mywebsite/"
+                            target="_blank"
+                            rel="noopener noreferrer">
+                            ayushsinghaca.github.io/mywebsite
+                        </a>
                     </div>
                 </li>
 
@@ -1408,7 +1669,7 @@
 
         <!-- LAST UPDATED -->
         <p class="mono" style="margin-top:4rem; opacity:0.6;">
-            Last Updated · May 2026
+            Last Updated · September 2026
         </p>
 
     </main>
