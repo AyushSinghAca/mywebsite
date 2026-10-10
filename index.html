@@ -897,6 +897,166 @@
 
             .publication-grid { grid-template-columns: 1fr; }
         }
+        
+/* Self-learning section */
+.self-learning-box {
+    width: 100%;
+    padding: clamp(1.25rem, 3vw, 2.25rem);
+    margin-top: 1.5rem;
+    border: 1px solid var(--border, rgba(128, 128, 128, 0.25));
+    border-radius: 20px;
+    background: var(--card-bg, rgba(128, 128, 128, 0.045));
+    box-sizing: border-box;
+}
+
+.self-learning-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1.5rem;
+    padding-bottom: 1.5rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border, rgba(128, 128, 128, 0.2));
+}
+
+.section-eyebrow {
+    display: inline-block;
+    margin-bottom: 0.65rem;
+    color: var(--accent);
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+}
+
+.self-learning-header h3 {
+    margin: 0 0 0.75rem;
+    font-size: clamp(1.25rem, 2.4vw, 1.75rem);
+    line-height: 1.35;
+}
+
+.self-learning-header p {
+    max-width: 760px;
+    margin: 0;
+    font-size: 0.95rem;
+    line-height: 1.8;
+    opacity: 0.78;
+}
+
+.self-learning-count {
+    flex-shrink: 0;
+    padding: 0.45rem 0.7rem;
+    border: 1px solid var(--border, rgba(128, 128, 128, 0.25));
+    border-radius: 8px;
+    font-family: var(--mono, monospace);
+    font-size: 0.68rem;
+    letter-spacing: 0.04em;
+    opacity: 0.8;
+}
+
+.self-learning-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.25rem;
+}
+
+.learning-item {
+    min-width: 0;
+    min-height: 250px;
+    padding: 1.4rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    border: 1px solid var(--border, rgba(128, 128, 128, 0.22));
+    border-radius: 14px;
+    background: var(--card-bg, rgba(128, 128, 128, 0.035));
+    box-sizing: border-box;
+    transition: transform 0.25s ease, border-color 0.25s ease;
+}
+
+.learning-item:hover {
+    transform: translateY(-3px);
+    border-color: var(--accent);
+}
+
+.learning-item-top {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.65rem;
+    margin-bottom: 1.15rem;
+}
+
+.learning-category {
+    font-family: var(--mono, monospace);
+    font-size: 0.7rem;
+    letter-spacing: 0.04em;
+    color: var(--accent);
+}
+
+.learning-status {
+    padding: 0.25rem 0.55rem;
+    border-radius: 6px;
+    font-size: 0.68rem;
+    font-weight: 600;
+}
+
+.learning-status.completed {
+    color: #27865b;
+    background: rgba(39, 134, 91, 0.12);
+}
+
+.learning-status.reading {
+    color: var(--accent);
+    background: color-mix(in srgb, var(--accent) 12%, transparent);
+}
+
+.learning-item h4 {
+    margin: 0 0 0.4rem;
+    font-size: 1.08rem;
+    line-height: 1.5;
+}
+
+.learning-author {
+    margin: 0 0 0.9rem;
+    font-size: 0.83rem;
+    opacity: 0.7;
+}
+
+.learning-description {
+    margin: 0;
+    font-size: 0.9rem;
+    line-height: 1.85;
+    opacity: 0.85;
+}
+
+/* Responsive layout */
+@media (max-width: 760px) {
+    .self-learning-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .learning-item {
+        min-height: auto;
+        padding: 1.2rem;
+    }
+
+    .self-learning-header {
+        flex-direction: column;
+    }
+}
+
+@media (min-width: 1400px) {
+    .self-learning-grid {
+        gap: 1.5rem;
+    }
+
+    .learning-item {
+        padding: 1.7rem;
+        min-height: 270px;
+    }
+}
+
     </style>
 </head>
 <body>
@@ -1439,11 +1599,10 @@
             </p>
 
             <ul class="course-list">
-                <li>Mathematical Methods in Physics <span class="course-status">Ongoing</span></li>
+                <li>Mathematical Methods <span class="course-status">Ongoing</span></li>
                 <li>Electrodynamics <span class="course-status">Ongoing</span></li>
                 <li>Classical Mechanics <span class="course-status">Ongoing</span></li>
                 <li>Quantum Mechanics II <span class="course-status">Ongoing</span></li>
-                <li>Atomic and Molecular Spectroscopy <span class="course-status">Ongoing</span></li>
                 <li>Modern Computational Techniques and Programming <span class="course-status">Ongoing</span></li>
                 <li>Quantum Physics &amp; Applications <span class="gpa">10.0</span></li>
                 <li>Mathematical Physics II (MP-II) <span class="gpa">10.0</span></li>
@@ -1486,35 +1645,67 @@
             </ul>
         </div>
 
-        <!-- BOX 3: COSMOLOGY / ASTROPHYSICS -->
-        <div class="data-group">
-            <h3>
-                Cosmology / Astrophysics
-                <span class="mono"
-                      style="font-size:0.6rem; color:var(--accent);">
-                    [Self-learned]
-                </span>
-            </h3>
+        
+<!-- GENERAL RELATIVITY -->
+<article class="learning-item">
+    <div class="learning-item-top">
+        <span class="learning-category">General Relativity</span>
+        <span class="learning-status completed">In Progress</span>
+    </div>
 
-            <p class="course-intro">
-                Independent study of the universe, gravitation, and
-                astronomical observations.
-            </p>
+    <h4>General Relativity</h4>
+    <p class="learning-author">
+        MIT OpenCourseWare · July 2026
+    </p>
 
-            <ul class="course-list">
-                <li>Cosmological Models</li>
-                <li>Dark Matter &amp; Dark Energy</li>
-                <li>Astroparticle Physics</li>
-                <li>Modified Gravity Theories</li>
-                <li>Gravitational Waves</li>
-                <li>Observational Astronomy</li>
-                <li>Stellar Evolution</li>
-                <li>Extragalactic Astronomy</li>
-                <li>Computational Cosmology</li>
-                <li>Photometry &amp; Data Reduction</li>
-                <li>UV &amp; Multiwavelength Astronomy</li>
-            </ul>
+    <p class="learning-description">
+        Studying Einstein's theory of gravity through university-level
+        course materials, focusing on spacetime geometry, curved spacetime,
+        and the mathematical foundations of gravitation.
+    </p>
+
+    <div class="learning-progress">
+        <div class="learning-progress-label">
+            <span>Lecture progress</span>
+            <strong>12 / 25 videos</strong>
         </div>
+        <div class="learning-progress-track">
+            <div class="learning-progress-fill" style="width: 48%;"></div>
+        </div>
+        <span class="learning-progress-note">48% completed · July 2026</span>
+    </div>
+</article>
+
+<!-- QUANTUM MECHANICS III -->
+<article class="learning-item">
+    <div class="learning-item-top">
+        <span class="learning-category">Quantum Mechanics</span>
+        <span class="learning-status reading">In Progress</span>
+    </div>
+
+    <h4>Quantum Mechanics III</h4>
+    <p class="learning-author">
+        MIT OpenCourseWare · July 2026
+    </p>
+
+    <p class="learning-description">
+        Continuing advanced study of quantum mechanics through MIT
+        lectures, strengthening the mathematical understanding of
+        quantum theory and its more advanced concepts.
+    </p>
+
+    <div class="learning-progress">
+        <div class="learning-progress-label">
+            <span>Lecture progress</span>
+            <strong>10 lectures completed</strong>
+        </div>
+        <div class="learning-progress-track">
+            <div class="learning-progress-fill" style="width: 62.5%;"></div>
+        </div>
+        <span class="learning-progress-note">Progress recorded · July 2026</span>
+    </div>
+</article>
+
 
     </div>
 </section>
